@@ -1,0 +1,26 @@
+[
+  {
+    "lang": "de-DE",
+    "text": "Heute ist ein wunderschöner sonniger Tag. Morgen wird es wahrscheinlich regnen."
+  },
+  {
+    "lang": "en-GB",
+    "text": "Today is a beautiful sunny day. Tomorrow, it's likely to rain."
+  },
+  {
+    "lang": "cs-CZ",
+    "text": "Dnes je krásné slunečné počasí. Obloha je bez mráčku a teploty jsou příjemně teplé."
+  },
+  {
+    "lang": "en-US",
+    "text": "Today is a beautiful sunny day. Tomorrow, it's likely to rain."
+  },
+  {
+    "lang": "fr-FR",
+    "text": "Aujourd'hui est une belle journée ensoleillée. Demain, il va probablement pleuvoir."
+  },
+  {
+    "lang": "it-IT",
+    "text": "Oggi è una bellissima giornata di sole. Domani probabilmente pioverà."
+  }
+]
