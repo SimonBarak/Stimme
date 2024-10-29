@@ -1,7 +1,3 @@
-import DialogLang from "./DialogLang";
-import { useEffect, useState } from "react";
-import ListManager from "./listManager";
-import { getVoices } from "@/functions/static";
 import SelectLang from "./ui/SelectLang";
 
 interface VoiceListProps {

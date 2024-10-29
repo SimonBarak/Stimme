@@ -3,10 +3,9 @@ import { getVoices } from "@/functions/static";
 import { addUIdata, validateSchema } from "@/functions/helpers";
 import { Descendant } from "slate";
 import { promises as fs } from "fs";
-import Header from "@/components/Header";
 import { auth } from "@/server/auth";
 
-export async function getFiles(): Promise<SchemaFile[] | undefined> {
+async function getFiles(): Promise<SchemaFile[] | undefined> {
   const filesData = await fs.readFile(
     process.cwd() + "/schemas/schemas.json",
     "utf8"

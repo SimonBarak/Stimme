@@ -1,11 +1,10 @@
-import Header from "@/components/Header";
 import StimmeEditor from "@/components/stimmeEditor";
 import { addUIdata, validateSchema } from "@/functions/helpers";
 import { getVoices } from "@/functions/static";
 import { auth } from "@/server/auth";
 import { promises as fs } from "fs";
 
-export async function getFiles(): Promise<SchemaFile[] | undefined> {
+async function getFiles(): Promise<SchemaFile[] | undefined> {
   const filesData = await fs.readFile(
     process.cwd() + "/schemas/schemas.json",
     "utf8"

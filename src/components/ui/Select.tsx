@@ -8,6 +8,13 @@ import {
 } from "@radix-ui/react-icons";
 import "./Select.css";
 
+// Define the props interface for SelectItem
+interface SelectItemProps {
+  children: React.ReactNode;
+  value: string;
+  className?: string;
+}
+
 const SelectDemo = ({
   setValue,
   options,
@@ -31,7 +38,7 @@ const SelectDemo = ({
         </Select.ScrollUpButton>
         <Select.Viewport className="SelectViewport">
           <Select.Group>
-            <Select.Label className="SelectLabel hidden">Fruits</Select.Label>
+            <Select.Label className="SelectLabel hidden"></Select.Label>
             {options.map((i) => (
               // eslint-disable-next-line react/jsx-key
               <SelectItem key={i} value={i}>
@@ -48,7 +55,7 @@ const SelectDemo = ({
   </Select.Root>
 );
 
-const SelectItem = React.forwardRef(
+const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <Select.Item
@@ -64,5 +71,7 @@ const SelectItem = React.forwardRef(
     );
   }
 );
+
+SelectItem.displayName = "SelectItem";
 
 export default SelectDemo;

@@ -89,6 +89,7 @@ type Item = {
   name: string;
   value: string;
   options?: string[];
+  avatar?: string;
 };
 
 type MenuItem = {

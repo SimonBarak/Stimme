@@ -17,6 +17,7 @@ import CharacterElement from "./editor/CharacterElement";
 import AudioPlayer from "./Player";
 import PhonemeMenu from "./PhonemeMenu";
 import Loading from "./Loading";
+import Link from "next/link";
 
 type StimmeEditorType = {
   initialValue: Descendant[];
@@ -128,6 +129,9 @@ const StimmeEditor = ({
     [editor]
   );
 
+  const unAuthenticateLenght = 200;
+  const authenticateLenght = 1000;
+
   function countTextLength(schema: Descendant[]): boolean {
     let totalLength = 0;
 
@@ -145,9 +149,6 @@ const StimmeEditor = ({
       }
     });
 
-    const unAuthenticateLenght = 100;
-    const authenticateLenght = 1000;
-
     const limitedLenght = isAuth ? authenticateLenght : unAuthenticateLenght;
 
     return totalLength > limitedLenght;
@@ -158,12 +159,9 @@ const StimmeEditor = ({
       editor={editor}
       initialValue={initialValue}
       onChange={(newValue) => {
-        console.log(newValue);
         const isToLong = countTextLength(newValue);
-        const errorMessage_Auth =
-          "Please, create audio in smaller peaces. (Max. 400 characters)";
-        const errorMessage_Free =
-          "Text is to long for free testing (Max. 100 characters)";
+        const errorMessage_Auth = `Please, create audio in smaller peaces. (Max. ${authenticateLenght} characters)`;
+        const errorMessage_Free = `Text is to long for free testing (Max. ${unAuthenticateLenght} characters)`;
 
         if (isToLong) {
           setGenerationState("disabled");
@@ -215,12 +213,16 @@ const StimmeEditor = ({
       </div>
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-4 ">
         {!isAuth ? (
-          <div className="p-4 bg-yellow-200 rounded-lg shadow-md mb-2">
+          <Link
+            href={"/pricing"}
+            className="p-4 bg-yellow-200 rounded-lg shadow-md mb-2 block"
+          >
             <div className="flex justify-between">
               <div className="text-lg">€4 for next 3 days</div>
+
               <div className="text-lg">Start now</div>
             </div>
-          </div>
+          </Link>
         ) : null}
 
         <div className="p-4 py-4 bg-gray-100 rounded-lg shadow-md h-20 min-w-96">

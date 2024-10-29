@@ -78,9 +78,9 @@ export const addAvatar = (
   voiceResponse: VoiceResponse,
   index: number
 ): Voice => {
-  const gender = voiceResponse.Gender;
+  const gender = voiceResponse.Gender === "Male" ? "a" : "b";
   const avatarNumber = index + 1;
-  const avatarUrl = `https://avatar.iran.liara.run/public/${avatarNumber}`;
+  const avatarUrl = `/img/avatars/${gender}${avatarNumber}.png`;
   const voice: Voice = { ...voiceResponse, avatar: avatarUrl };
   return voice;
 };

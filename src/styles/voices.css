@@ -1,0 +1,127 @@
+.voice-label::before {
+  color: lightgrey;
+}
+
+.voice-label.vlasta::before {
+  content: "Vlasta";
+}
+
+.voice-label.antonin::before {
+  content: "Antonin";
+}
+
+.voice-label.conrad::before {
+  content: "Conrad";
+}
+
+.voice-label.gisela::before {
+  content: "Gisela";
+}
+
+.voice-label.kasper::before {
+  content: "Kasper";
+}
+
+.voice-label.amala::before {
+  content: "Amala";
+}
+
+.voice-label.bernd::before {
+  content: "Bernd";
+}
+
+.voice-label.christoph::before {
+  content: "Christoph";
+}
+
+.voice-label.elke::before {
+  content: "Elke";
+}
+
+.voice-label.killian::before {
+  content: "Killian";
+}
+
+.voice-label.klarissa::before {
+  content: "Klarissa";
+}
+
+.voice-label.klaus::before {
+  content: "Klaus";
+}
+
+.voice-label.louisa::before {
+  content: "Louisa";
+}
+
+.voice-label.maja::before {
+  content: "Maja";
+}
+
+.voice-label.ralf::before {
+  content: "Ralf";
+}
+
+.voice-label.tanja::before {
+  content: "Tanja";
+}
+
+.voice-label.sonia::before {
+  content: "Sonia";
+}
+
+.voice-label.ryan::before {
+  content: "Ryan";
+}
+
+.voice-label.jenny::before {
+  content: "Jenny";
+}
+
+.voice-label.guy::before {
+  content: "Guy";
+}
+
+.voice-label.aria::before {
+  content: "Aria";
+}
+
+.voice-label.davis::before {
+  content: "Davis";
+}
+
+.voice-label.jane::before {
+  content: "Jane";
+}
+
+.voice-label.jason::before {
+  content: "Jason";
+}
+
+.voice-label.sara::before {
+  content: "Sara";
+}
+
+.voice-label.tony::before {
+  content: "Tony";
+}
+
+.voice-label.nancy::before {
+  content: "Nancy";
+}
+
+.voice-label.kai::before {
+  content: "Kai";
+}
+
+.voice-label.luna::before {
+  content: "Luna";
+}
+
+.voice-label.denise::before {
+  content: "Denise";
+}
+
+.voice-label.henri::before {
+  content: "Henri";
+}

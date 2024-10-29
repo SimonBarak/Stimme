@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
-function createParams(origin: string) {
+function createParams() {
   const params: Stripe.Checkout.SessionCreateParams = {
     mode: "payment",
     line_items: [
@@ -51,11 +51,9 @@ async function createCheckoutSession(
   }
 }
 
-export async function POST(req: NextApiRequest) {
+export async function POST() {
   try {
-    //console.log("hello from checkout_session");
-    const origin = req.headers.origin ?? "https://hlasem.com";
-    const params = createParams(origin);
+    const params = createParams();
     const session = await createCheckoutSession(params);
     return NextResponse.json(session, { status: 200 });
   } catch (error) {

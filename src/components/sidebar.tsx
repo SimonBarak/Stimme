@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Select from "./ui/Select";
-
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import Button from "@/components/ui/Button";
-import ListManager from "./listManager";
+import React from "react";
 import VoiceMenu from "./VoiceMenu";
 import BreakMenu from "./BreakMenu";
-import FileMenu from "./FileMenu";
 import LangMenu from "./LangMenu";
 
 interface SidebarProps {

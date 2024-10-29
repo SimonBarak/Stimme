@@ -1,5 +1,37 @@
 [
   {
+    "id": "cs-CZ-VlastaNeural",
+    "lang": "Czech (Czechia)",
+    "schema": [
+      {
+        "type": "paragraph",
+        "voice": "Vlasta",
+        "emotion": "",
+        "children": [
+          {
+            "text": "Dnes je krásné slunečné počasí. Obloha je bez mráčku a teploty jsou příjemně teplé."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cs-CZ-AntoninNeural",
+    "lang": "Czech (Czechia)",
+    "schema": [
+      {
+        "type": "paragraph",
+        "voice": "Antonin",
+        "emotion": "",
+        "children": [
+          {
+            "text": "Dnes je krásné slunečné počasí. Obloha je bez mráčku a teploty jsou příjemně teplé."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "de-DE-ConradNeural",
     "lang": "German (Germany)",
     "schema": [
@@ -9,20 +41,8 @@
         "emotion": "",
         "children": [
           {
-            "text": "Hallo und herzlich willkommen zu unserem Tutorial!"
+            "text": "Heute ist ein wunderschöner sonniger Tag. Morgen wird es wahrscheinlich regnen."
           }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "voice": "Conrad",
-        "emotion": "",
-        "children": [
-          {
-            "text": "In diesem Video werden wir gemeinsam in die Grundlagen von"
-          },
-          { "text": "JavaScript", "type": "phoneme", "id": "js-1" },
-          { "text": " eintauchen, der Sprache, die das Web interaktiv macht." }
         ]
       }
     ]
@@ -230,38 +250,6 @@
         "children": [
           {
             "text": "Heute ist ein wunderschöner sonniger Tag. Morgen wird es wahrscheinlich regnen."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "cs-CZ-VlastaNeural",
-    "lang": "Czech (Czechia)",
-    "schema": [
-      {
-        "type": "paragraph",
-        "voice": "Vlasta",
-        "emotion": "",
-        "children": [
-          {
-            "text": "Dnes je krásné slunečné počasí. Obloha je bez mráčku a teploty jsou příjemně teplé."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "cs-CZ-AntoninNeural",
-    "lang": "Czech (Czechia)",
-    "schema": [
-      {
-        "type": "paragraph",
-        "voice": "Antonin",
-        "emotion": "",
-        "children": [
-          {
-            "text": "Dnes je krásné slunečné počasí. Obloha je bez mráčku a teploty jsou příjemně teplé."
           }
         ]
       }

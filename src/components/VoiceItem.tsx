@@ -74,7 +74,7 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
           </div>
           <div>
             <div className="flex gap-2">
-              <Button variant="text" onClick={handleOpenClick}>
+              <Button variant="ghost" onClick={handleOpenClick}>
                 {isLoading ? <span>Loading</span> : <span>Open</span>}
               </Button>
               <Button onClick={handlePlayClick}>

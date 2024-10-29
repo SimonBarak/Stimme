@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Popover from "../ui/Popover";
 import Select from "../ui/Select";
 import Button from "../ui/Button";
+import Image from "next/image";
 
 type ListItemProps = {
   item: Item;
@@ -31,7 +33,12 @@ const ListItem: React.FC<ListItemProps> = ({
           onClick={() => onApply(item)}
           className="w-full px-2 py-2 flex gap-2 hover:bg-gray-300 rounded cursor-pointer"
         >
-          <div>{item.name}</div>
+          <div className="flex gap-2">
+            {item.avatar ? (
+              <Image src={item.avatar} alt="" width={25} height={25} />
+            ) : null}
+            {item.name}
+          </div>
 
           {item.value != "normal" ? <div>{item.value}</div> : null}
         </button>

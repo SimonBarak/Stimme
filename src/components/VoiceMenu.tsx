@@ -13,6 +13,7 @@ const voiceIntoMenuItem = (item: Voice): Item => {
     name: `${item.DisplayName}`,
     value: "normal",
     options: item.StyleList,
+    avatar: item.avatar,
   };
 };
 

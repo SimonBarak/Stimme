@@ -2,10 +2,16 @@ import { textToSpeech } from "@/functions/generation";
 import { NextResponse } from "next/server";
 import { auth } from "@/server/auth";
 
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<Response> {
   const key = process.env.AZURE_SPEECH_KEY;
   const region = process.env.AZURE_SPEECH_REGION || "westeurope";
   const session = await auth();
+
+  if (!key) {
+    return NextResponse.json({ error: "wrong key" }, { status: 400 });
+  } else {
+    console.log(key);
+  }
 
   let text: string = "";
 
@@ -29,13 +35,13 @@ export async function POST(request: Request) {
 
   try {
     const resultStream = await textToSpeech(key, region, text);
-
     let dataChunks: Buffer[] = [];
-    resultStream.on("data", (chunk: Buffer) => {
-      dataChunks.push(chunk);
-    });
 
-    return new Promise((resolve, reject) => {
+    return new Promise<Response>((resolve, reject) => {
+      resultStream.on("data", (chunk: Buffer) => {
+        dataChunks.push(chunk);
+      });
+
       resultStream.on("end", () => {
         const audioBuffer = Buffer.concat(dataChunks);
 
@@ -49,6 +55,7 @@ export async function POST(request: Request) {
 
       resultStream.on("error", (error: any) => {
         console.error("Stream error:", error);
+        // Always resolve or reject with a Response
         reject(
           NextResponse.json(
             { error: "Failed to process text to speech." },
@@ -58,7 +65,7 @@ export async function POST(request: Request) {
       });
     });
   } catch (error) {
-    console.error(error);
+    console.error("Text-to-speech conversion failed:", error);
     return NextResponse.json(
       { error: "Failed to convert text to speech." },
       { status: 500 }

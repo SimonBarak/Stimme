@@ -8,6 +8,12 @@ import {
 } from "@radix-ui/react-icons";
 import "./Select.css";
 
+interface SelectItemProps {
+  children: React.ReactNode;
+  value: string;
+  className?: string;
+}
+
 const SelectDemo = ({
   setValue,
   options,
@@ -45,7 +51,7 @@ const SelectDemo = ({
   </Select.Root>
 );
 
-const SelectItem = React.forwardRef(
+const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   // @ts-ignore
   ({ children, className, ...props }, forwardedRef) => {
     return (

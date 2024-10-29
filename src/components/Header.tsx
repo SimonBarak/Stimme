@@ -1,8 +1,12 @@
 import Link from "next/link";
-import CheckoutButton from "./CheckoutButton";
+import StartButton from "./StartButton";
 import Authentication from "./Authentication";
 
-export default function Header() {
+type HeaderType = {
+  showCTS: boolean;
+};
+
+export default function Header({ showCTS = false }: HeaderType) {
   return (
     <div className="fixed top-0 w-full">
       <div className="p-5 py-6">
@@ -13,6 +17,7 @@ export default function Header() {
           <div></div>
           <nav className="flex gap-6 items-center">
             <Authentication />
+            {showCTS ? <StartButton /> : null}
           </nav>
         </div>
       </div>

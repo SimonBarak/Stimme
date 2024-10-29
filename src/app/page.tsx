@@ -3,6 +3,7 @@ import { addUIdata, validateSchema } from "@/functions/helpers";
 import VoiceList from "@/components/VoiceList";
 import Header from "@/components/Header";
 import Layout from "./layout";
+import StartButton from "@/components/StartButton";
 
 export default async function Page() {
   const voicesResponse: VoiceResponse[] = (await getVoices()) ?? [];
@@ -10,6 +11,7 @@ export default async function Page() {
 
   return (
     <>
+      <Header showCTS={true} />
       <div className=" ">
         <section className="container mx-auto py-20 md:py-36 w-full text-left">
           <h1 className="px-4 text-3xl md:text-5xl lg:text-8xl lg:leading-none xl:leading-none mb-6 lg:mb-10 xl:mb-10">
@@ -20,12 +22,7 @@ export default async function Page() {
             Create high-quality audio in your own language
           </p>
           <div className="px-4 mb-40">
-            <a
-              href="/edit"
-              className="bg-yellow-200 hover:bg-yellow-300 px-6 py-3 text-lg inline-flex items-center justify-center rounded-md transition-all cursor-pointer text-black"
-            >
-              Create recording
-            </a>
+            <StartButton />
           </div>
 
           <div className="px-4 video-container -translate-y-10">
@@ -64,7 +61,7 @@ export default async function Page() {
           <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal mb-8 text-gray-600">
             Email
           </p>
-          <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal mb-8">
+          <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal mb-16">
             simon@hlasem.com
           </p>
           <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal mb-8  text-gray-600">

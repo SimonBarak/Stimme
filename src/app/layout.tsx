@@ -19,9 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Theme>
-          <Header />
           <div>{modal}</div>
-
           <main>{children}</main>
         </Theme>
       </body>

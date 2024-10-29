@@ -49,7 +49,9 @@ const VoiceList: React.FC<VoiceListProps> = ({
   defaultValue = "German (Germany)",
   size,
 }) => {
+  console.log(voices);
   const [showFixedDiv, setShowFixedDiv] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [filteredItems, setFilteredItems] = useState<Voice[]>(
     filterItems(defaultValue, voices)
   );
@@ -61,13 +63,16 @@ const VoiceList: React.FC<VoiceListProps> = ({
     "https://stimmestatic.blob.core.windows.net/audio/en-US-DavisNeural_cheerful.mp3"
   );
 
-  const handlePlayAudio = async (id: string) => {
+  const playAudio = async (id: string) => {
     const lowerCase = id.toLocaleLowerCase();
     const version = "2";
     const audioUrl = `https://stimmestatic.blob.core.windows.net/audio/${lowerCase}-${version}.mp3`;
-    console.log("https://stimmestatic.blob.core.windows.net/audio/amala-2.mp3");
-    console.log(audioUrl);
     setAudioSrc(audioUrl);
+  };
+
+  const handlePlayAudio = async (id: string) => {
+    playAudio(id);
+    setIsPlaying(true);
   };
 
   const languageItems = [...new Set(voices.map((item) => item.LocaleName))];
@@ -107,13 +112,15 @@ const VoiceList: React.FC<VoiceListProps> = ({
 
   return (
     <div ref={parentRef}>
-      {showFixedDiv && (
-        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-200 rounded-xl shadow">
-          <div className="container mx-auto px-8 py-4">
-            {audioSrc && <PlayerSm src={audioSrc} />}
+      {showFixedDiv ? (
+        isPlaying ? (
+          <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-200 rounded-xl shadow">
+            <div className="container mx-auto px-8 py-4">
+              {audioSrc && <PlayerSm src={audioSrc} />}
+            </div>
           </div>
-        </div>
-      )}
+        ) : null
+      ) : null}
 
       <div className="container mx-auto mb-20">
         <div className="flex flex-col gap-1 w-60">
