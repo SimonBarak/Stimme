@@ -1,7 +1,7 @@
 import { RenderElementProps } from "slate-react";
 
 const CharacterElement = ({ element, children }: RenderElementProps) => {
-  const { voice } = element;
+  const voice = element.voice;
 
   if (voice) {
     const voiceClass = voice.toLowerCase();
