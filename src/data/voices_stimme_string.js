@@ -1,4 +1,4 @@
-[
+export const voices_string = `[
   {
     "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, VlastaNeural)",
     "DisplayName": "Vlasta",
@@ -527,4 +527,4 @@
     "Status": "GA",
     "WordsPerMinute": "165"
   }
-]
+]`;

@@ -1,9 +1,6 @@
 "use server";
 import Header from "@/components/Header";
 import VoiceList from "@/components/VoiceList";
-import GenerateButton from "@/components/voices/GenerateButton";
-import GenerateSchemaButton from "@/components/voices/GenerateSchemaButton";
-
 import { addUIdata } from "@/functions/helpers";
 import { getVoices } from "@/functions/static";
 

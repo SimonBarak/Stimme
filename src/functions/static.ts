@@ -1,13 +1,17 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { voices_string } from "@/data/voices_stimme_string.js";
+
 // Function to fetch the voices data from a local JSON file
 export async function getVoices(): Promise<VoiceResponse[]> {
   try {
     // Load the JSON file containing voices and emotions
-    const file = await fs.readFile(
-      process.cwd() + "/src/data/voices_stimme.json",
-      "utf8"
-    );
+    // const file = await fs.readFile(
+    //   process.cwd() + "/src/data/voices_stimme.json",
+    //   "utf8"
+    // );
+
+    const file = voices_string;
 
     // Parse the JSON data into a JavaScript object
     const voicesResponse: VoiceResponse[] = JSON.parse(file);
