@@ -6,7 +6,7 @@
       {
         "type": "paragraph",
         "voice": "Vlasta",
-        "emotion": "",
+        "emotion": "normal",
         "children": [
           {
             "text": "Dnes je krásné slunečné počasí. Obloha je bez mráčku a teploty jsou příjemně teplé."

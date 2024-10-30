@@ -19,6 +19,39 @@ import PhonemeMenu from "./PhonemeMenu";
 import Loading from "./Loading";
 import Link from "next/link";
 
+// This example is for an Editor with `ReactEditor` and `HistoryEditor`
+import { BaseEditor } from "slate";
+import { ReactEditor } from "slate-react";
+import { HistoryEditor } from "slate-history";
+
+type CustomElement = {
+  type: "paragraph";
+  voice: string;
+  children: CustomText[];
+};
+
+type CustomText = { text: string; type: string; phoneme?: string };
+
+export interface CustomRenderElementProps {
+  children: any;
+  element: CustomElement;
+  attributes: {
+    "data-slate-node": "element";
+    "data-slate-inline"?: true;
+    "data-slate-void"?: true;
+    dir?: "rtl";
+    ref: any;
+  };
+}
+
+declare module "slate" {
+  interface CustomTypes {
+    Editor: BaseEditor & ReactEditor & HistoryEditor;
+    Element: CustomElement;
+    Text: CustomText;
+  }
+}
+
 type StimmeEditorType = {
   initialValue: Descendant[];
   personas: Voice[];
@@ -53,16 +86,7 @@ const StimmeEditor = ({
     personas[3],
   ]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const toggleElement = (voice: string, emotion: string | undefined) => {
-    Transforms.setNodes(editor, {
-      type: "paragraph",
-      voice: voice,
-      emotion: emotion,
-    });
-  };
-
-  const renderElement = useCallback((props: RenderElementProps) => {
+  const renderElement = useCallback((props: CustomRenderElementProps) => {
     return <CharacterElement {...props} />;
   }, []);
 
@@ -79,10 +103,17 @@ const StimmeEditor = ({
     []
   );
 
+  const toggleElement = (voice: string, emotion: string | undefined) => {
+    Transforms.setNodes(editor, {
+      type: "paragraph",
+      voice: voice,
+    });
+  };
+
   const toggleLeaf = (value: string) => {
     Transforms.setNodes(
       editor,
-      { type: "phoneme", id: value },
+      { type: "phoneme", phoneme: value },
       { match: (n) => Text.isText(n), split: true }
     );
   };
