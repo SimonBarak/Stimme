@@ -43,7 +43,6 @@ const VoiceMenu: React.FC<VoiceMenuProps> = ({
   }, [languageValue, voices]);
 
   const onApply = (item: Item) => {
-    console.log(item);
     toggleElement(item.id, item.value);
   };
 

@@ -33,11 +33,6 @@ const AccountBoard: React.FC<AccountBoardProps> = ({
     }
   };
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    handleSignOut();
-    console.log("Button clicked!", event);
-  };
-
   return (
     <div>
       <div>

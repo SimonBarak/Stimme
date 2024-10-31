@@ -49,7 +49,6 @@ const VoiceList: React.FC<VoiceListProps> = ({
   defaultValue = "German (Germany)",
   size,
 }) => {
-  console.log(voices);
   const [showFixedDiv, setShowFixedDiv] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [filteredItems, setFilteredItems] = useState<Persona[]>(

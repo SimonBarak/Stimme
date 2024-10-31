@@ -10,7 +10,9 @@ type EditPropsType = {
 };
 
 export default async function Page() {
-  const postData: EditPropsType = await getPropsData({ id: "vlasta" });
+  const postData: EditPropsType = await getPropsData({
+    id: "de-DE-ConradNeural",
+  });
   const { initialValue, initialLanguage, personas } = postData;
   const session = await auth();
   const isAuth = session != null;

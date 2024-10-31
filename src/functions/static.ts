@@ -23,8 +23,6 @@ export async function getFile(id: string) {
   const files = await getFiles();
   if (files) {
     const file = files.find((i) => i.id === id);
-    console.log("getFile");
-    console.log(file);
     return file;
   }
 }
@@ -84,8 +82,6 @@ export async function writeJsonFile(
 
     // Write the JSON string to the file
     await fs.writeFile(filePath, jsonString, "utf8");
-
-    console.log(`JSON file successfully written to ${filePath}`);
   } catch (error) {
     console.error(`Error writing JSON file:`, error);
     throw new Error("Failed to write JSON file.");

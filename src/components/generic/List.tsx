@@ -34,7 +34,6 @@ const List: React.FC<ListProps> = ({
   };
 
   useEffect(() => {
-    console.log(initialItems);
     setItems(initialItems);
   }, [initialItems]);
 

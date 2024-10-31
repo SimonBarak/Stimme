@@ -35,7 +35,6 @@ const splitNodeWithTextLimit = (childrens, currentLength, limit) => {
 };
 
 export const withMaxLength = (limit) => (editor) => {
-  console.log(limit);
   const { insertText, insertBreak, insertFragment } = editor;
 
   editor.getStringLength = () => {

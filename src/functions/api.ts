@@ -40,7 +40,6 @@ export async function fetchData(input: string): Promise<void> {
     }
 
     const data = await res.json();
-    console.log(data);
   } catch (error) {
     console.error("Error fetching or playing audio", error);
   }
@@ -92,9 +91,6 @@ export async function generateAudioFiles(): Promise<void> {
 
     // Parse the JSON response data
     const data = await response.json();
-
-    // Log the data received from the API
-    console.log("Audio files generated:", data);
   } catch (error) {
     // Log any errors that occur during the fetch or processing
     console.error("Error fetching or generating audio files:", error);
@@ -118,9 +114,6 @@ export async function generateSchemas(): Promise<void> {
 
     // Parse the JSON response data
     const data = await response.json();
-
-    // Log the data received from the API
-    console.log("Schema files generated:", data);
   } catch (error) {
     // Log any errors that occur during the fetch or processing
     console.error("Error fetching schemas:", error);
@@ -170,7 +163,6 @@ export const fetchSecureData = async () => {
       throw new Error(await res.text());
     }
     const data = await res.json();
-    console.log(data);
     // Handle the secure data
   } catch (error) {
     console.error("Failed to fetch secure data:", error);
@@ -182,15 +174,12 @@ export const fetchSecureData = async () => {
 //
 //
 export const fetchLog = async () => {
-  console.log("fetchLog");
   try {
     const res = await fetch("/api/log");
     if (!res.ok) {
       throw new Error(await res.text());
     }
     const data = await res.json();
-    console.log(data);
-    // Handle the secure data
   } catch (error) {
     console.error("Failed to fetch secure data:", error);
     // Handle errors (e.g., showing an error message to the user)
@@ -213,8 +202,6 @@ export const fetchVoices = async (
 
     const voiceList = JSON.parse(data);
 
-    console.log(voiceList);
-
     return voiceList;
     // Handle the secure data
   } catch (error) {
@@ -223,26 +210,3 @@ export const fetchVoices = async (
     // Handle errors (e.g., showing an error message to the user)
   }
 };
-
-// export const fetchVoicesFile = async (
-//   lang: string
-// ): Promise<VoiceResponse[] | undefined> => {
-//   console.log("Fetching voices for lang:", lang);
-//   try {
-//     // Determine the file path
-//     const filePath = path.join(process.cwd(), "data", "default_voices.json");
-
-//     // Read the file content
-//     const fileContent = await fs.readFile(filePath, "utf-8");
-
-//     // Parse the JSON content
-//     const voiceList: VoiceResponse[] = JSON.parse(fileContent);
-
-//     console.log(voiceList);
-
-//     return voiceList;
-//   } catch (error) {
-//     console.error("Failed to fetch voices:", error);
-//     return undefined;
-//   }
-// };

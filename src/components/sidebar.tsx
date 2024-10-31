@@ -19,10 +19,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   setLanguageValue,
   personas,
 }) => {
-  // useEffect(() => {
-  //   console.log(languageValue);
-  // }, [languageValue]);
-
   return (
     <div className="w-60 bg-gray-100 rounded-lg text-sm shadow-md ">
       <div className="">

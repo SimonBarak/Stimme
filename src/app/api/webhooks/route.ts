@@ -24,7 +24,6 @@ export async function POST(req: Request) {
       sig,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
-    console.log("event.type:", event.type);
   } catch (err: any) {
     console.error(`Webhook Error: ${err.message}`);
     return NextResponse.json(
@@ -38,7 +37,6 @@ export async function POST(req: Request) {
     const session = event.data.object;
 
     if (session.customer_details) {
-      console.log(session.customer_details.email);
     }
 
     // Retrieve the customer email
@@ -47,7 +45,6 @@ export async function POST(req: Request) {
     try {
       // Call your user creation logic
       // await createUser({ email });
-      // console.log("User created successfully:", email);
     } catch (error) {
       console.error("Error creating user:", error);
       return NextResponse.json(
@@ -56,21 +53,6 @@ export async function POST(req: Request) {
       );
     }
   }
-
-  // // Handle the event
-  // switch (event.type) {
-  //   case "payment_intent.succeeded":
-  //     const paymentIntent = event.data.object;
-  //     console.log("PaymentIntent was successful!", paymentIntent);
-  //     break;
-  //   case "invoice.payment_failed":
-  //     const invoice = event.data.object;
-  //     console.log("Invoice payment failed.", invoice);
-  //     break;
-  //   // Add more event types as needed
-  //   default:
-  //     console.log(`Unhandled event type ${event.type}`);
-  // }
 
   // Respond to Stripe
   return NextResponse.json({ received: true }, { status: 200 });

@@ -53,7 +53,7 @@ export async function checkOutHttp(price_type) {
       window.open(responseString);
       return true;
     } else {
-      console.log(response.error);
+      console.error(response.error);
     }
   } catch (err) {
     alert("Oooops, zkuste to prosím ještě jednou"); // TypeError: failed to fetch

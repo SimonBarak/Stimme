@@ -19,7 +19,7 @@ export const textToSpeech = async (
     const speechConfig = sdk.SpeechConfig.fromSubscription(key, region);
 
     if (speechConfig) {
-      console.log("Successfully logged");
+      console.info("Successfully logged");
     } else {
       console.error("Failed to create speech config.");
     }

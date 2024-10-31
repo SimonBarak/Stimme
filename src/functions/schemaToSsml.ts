@@ -56,7 +56,6 @@ function jsonToSSML(
         ssml += `<mstts:express-as style="${paragraph.emotion}" styledegree="2">`;
       }
 
-      paragraph.children.forEach((child: any) => console.log(child));
       paragraph.children.forEach((child: any) => {
         if (child.type) {
           const phonemeKey = child.id;
@@ -88,8 +87,6 @@ function jsonToSSML(
   const ssmlWithBeaks = replaceBreakMarkers(ssml);
 
   const ssmlText = `${header}${ssmlWithBeaks}${footer}`;
-
-  console.log(ssmlText);
 
   return ssmlText;
 }

@@ -26,15 +26,8 @@ async function createCheckoutSession(
     // @ts-ignore
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    console.log(process.env.STRIPE_SECRET_KEY);
-
     const checkoutSession: Stripe.Checkout.Session =
       await stripe.checkout.sessions.create(params);
-
-    // Log the Stripe API response for debugging
-    console.log("Checkout Session created successfully:", checkoutSession);
-    //console.log("Checkout Session created successfully");
-
     return checkoutSession;
   } catch (error: any) {
     // Log the error and any available information from the Stripe API response

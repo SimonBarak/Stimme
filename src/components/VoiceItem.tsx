@@ -42,7 +42,6 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
   };
 
   function handleOpenClick() {
-    console.log(voice.ShortName);
     openLink(voice.ShortName);
   }
 

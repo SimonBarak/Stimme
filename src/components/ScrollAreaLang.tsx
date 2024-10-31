@@ -28,7 +28,6 @@ const ScrollAreaLang = ({
   };
 
   const removeItem = (id: string) => {
-    console.log("remove", id);
     remove(id);
     setToggleItems(toggleItemById(toggleItems, id));
   };
