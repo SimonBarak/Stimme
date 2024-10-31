@@ -4,7 +4,7 @@ function mapPhoneme(id: string): TechPhoneme | undefined {
   return phonemes.find((i) => i.id === id);
 }
 
-function mapLang(LocaleName: string, personas: Voice[]) {
+function mapLang(LocaleName: string, personas: Persona[]) {
   // hack to defind lang
   const persona = personas.find((i) => i.LocaleName === LocaleName);
   if (persona) {
@@ -15,7 +15,7 @@ function mapLang(LocaleName: string, personas: Voice[]) {
   }
 }
 
-function mapVoice(DisplayName: string, personas: Voice[]): string {
+function mapVoice(DisplayName: string, personas: Persona[]): string {
   const persona = personas.find((i) => i.DisplayName === DisplayName);
 
   if (persona) {
@@ -37,7 +37,7 @@ function replaceBreakMarkers(text: string): string {
 function jsonToSSML(
   schema: any[],
   languageValue: string,
-  personas: Voice[]
+  personas: Persona[]
 ): string {
   // Initialize the SSML string with the header
 

@@ -1,4 +1,5 @@
 import { promises as fs } from "fs";
+import { Descendant } from "slate";
 
 export async function getTexts(): Promise<Translation[]> {
   try {
@@ -59,13 +60,12 @@ export function assemblyParagraph(
   DisplayName: string,
   text: string,
   style?: string
-): Descendanto {
-  const children = [{ text: text }];
+): Descendant {
+  const children = [{ type: "text", text: text }];
 
-  let paragraph: Descendanto = {
+  let paragraph: Descendant = {
     type: "paragraph",
     voice: DisplayName,
-    emotion: "",
     children,
   };
 
@@ -77,10 +77,7 @@ export function assemblyParagraph(
   return paragraph;
 }
 
-export function createSchema(
-  voice: VoiceResponse,
-  text: string
-): Descendanto[] {
+export function createSchema(voice: VoiceResponse, text: string): Descendant[] {
   const paragraf = assemblyParagraph(voice.Locale, voice.DisplayName, text);
 
   return [paragraf];

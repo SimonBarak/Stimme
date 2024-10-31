@@ -8,7 +8,7 @@ import Image from "next/image";
 //import { generateRandomGradient } from "@/functions/gradient";
 
 interface VoiceItemProps {
-  voice: Voice;
+  voice: Persona;
   handlePlayAudio: (id: string) => Promise<void>;
 }
 

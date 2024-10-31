@@ -1,50 +1,25 @@
 import StimmeEditor from "@/components/stimmeEditor";
-import { getVoices } from "@/functions/static";
-import { addUIdata, validateSchema } from "@/functions/helpers";
+import { getPropsData } from "@/functions/static";
 import { Descendant } from "slate";
-import { promises as fs } from "fs";
 import { auth } from "@/server/auth";
 
-async function getFiles(): Promise<SchemaFile[] | undefined> {
-  const filesData = await fs.readFile(
-    process.cwd() + "/schemas/schemas.json",
-    "utf8"
-  );
+type EditPropsType = {
+  personas: Persona[];
+  initialValue: Descendant[];
+  initialLanguage: string;
+};
 
-  const files: SchemaFile[] = JSON.parse(filesData);
-
-  if (files) {
-    return files;
-  } else {
-    console.error("getVoices");
-  }
-}
-
-export default async function Edit() {
-  let initValue: Descendant[] = [];
-  let initLanguage = "English (United States)";
+export default async function Page() {
+  const postData: EditPropsType = await getPropsData({ id: "vlasta" });
+  const { initialValue, initialLanguage, personas } = postData;
   const session = await auth();
   const isAuth = session != null;
-
-  const files = await getFiles();
-
-  if (files) {
-    // TODO default file
-    const { lang, schema }: SchemaFile = files[0];
-    initValue = validateSchema(schema);
-    initLanguage = lang;
-  }
-
-  // fetch voices from file
-  const voicesResponse: VoiceResponse[] = (await getVoices()) ?? [];
-
-  const personas = addUIdata(voicesResponse);
 
   return (
     <>
       <StimmeEditor
-        initialLaguage={initLanguage}
-        initialValue={initValue}
+        initialValue={initialValue}
+        initialLaguage={initialLanguage}
         personas={personas}
         isAuth={isAuth}
       />

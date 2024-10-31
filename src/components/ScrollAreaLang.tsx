@@ -11,7 +11,7 @@ const ScrollAreaLang = ({
   add,
   remove,
 }: {
-  items: Voice[];
+  items: Persona[];
   selected: string[];
   add: (id: string) => void;
   remove: (id: string) => void;

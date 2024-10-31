@@ -4,7 +4,9 @@ import { getVoices } from "./static";
 const bucketUrl = "https://wavepagestorage.blob.core.windows.net/audiofiles/";
 
 // Define a utility function to ensure the schema is of the correct type
-export const validateSchema = (schema: Descendanto[]): Descendant[] => {
+export const validateSchema = (
+  schema: DescendantUseOnlyInIndex[]
+): Descendant[] => {
   // Here, you'd ideally validate and transform your schema to match the expected type
   // This example assumes that schema already conforms to the correct type.
 
@@ -22,7 +24,7 @@ export const mapCharacter = async (displayName: string) => {
   );
 
   if (characterResponse) {
-    const character: Voice = addAvatar(characterResponse, 1);
+    const character: Persona = addAvatar(characterResponse, 1);
     return character;
   } else {
     return addAvatar(voicesResponse[0], 0);
@@ -62,7 +64,7 @@ function chunkArray<T>(items: T[], chunkSize: number = 49): T[][] {
 }
 
 export const inputItemToItemToggle = (
-  arr: Voice[],
+  arr: Persona[],
   selected: string[]
 ): ToggleItem[] =>
   arr.map((item) => {
@@ -77,11 +79,11 @@ export const inputItemToItemToggle = (
 export const addAvatar = (
   voiceResponse: VoiceResponse,
   index: number
-): Voice => {
+): Persona => {
   const gender = voiceResponse.Gender === "Male" ? "a" : "b";
   const avatarNumber = index + 1;
   const avatarUrl = `/img/avatars/${gender}${avatarNumber}.png`;
-  const voice: Voice = { ...voiceResponse, avatar: avatarUrl };
+  const voice: Persona = { ...voiceResponse, avatar: avatarUrl };
   return voice;
 };
 
@@ -95,7 +97,7 @@ function addAvatars(voices: VoiceResponse[]) {
   return voicesWithAvatar.flat();
 }
 
-export function addUIdata(voices: VoiceResponse[]): Voice[] {
-  const voicesWithAvatars: Voice[] = addAvatars(voices);
+export function addUIdata(voices: VoiceResponse[]): Persona[] {
+  const voicesWithAvatars: Persona[] = addAvatars(voices);
   return voicesWithAvatars;
 }

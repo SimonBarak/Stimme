@@ -1,3 +1,5 @@
+// import { Descendant } from "slate";
+
 type GenerationState = "ready" | "loading" | "disabled" | "error";
 
 type Translation = {
@@ -16,7 +18,7 @@ type Style = {
   color: string;
 };
 
-type Voice = VoiceResponse & {
+type Persona = VoiceResponse & {
   avatar: string;
   emotion?: string;
 };
@@ -38,10 +40,9 @@ type VoiceResponse = {
   SecondaryLocaleList?: string[];
 };
 
-type Descendanto = {
+type DescendantUseOnlyInIndex = {
   type: string;
   voice: string;
-  emotion?: string;
   children: Array<{
     text: string;
   }>;
@@ -50,13 +51,21 @@ type Descendanto = {
 type SchemaFile = {
   id: string;
   lang: string;
-  schema: Descendanto[];
+  schema: DescendantUseOnlyInIndex[];
 };
 
 type VoiceItem = {
   voice: VoiceResponse;
   mainText: string;
   styleTexts?: string[];
+};
+
+type IDObject = {
+  id: string;
+};
+
+type RouterParams = {
+  params: IDObject;
 };
 
 // type Voice = Item & {

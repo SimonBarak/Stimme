@@ -54,7 +54,7 @@ declare module "slate" {
 
 type StimmeEditorType = {
   initialValue: Descendant[];
-  personas: Voice[];
+  personas: Persona[];
   initialLaguage: string;
   isAuth: boolean;
 };
@@ -67,8 +67,6 @@ const StimmeEditor = ({
 }: StimmeEditorType) => {
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [inLimit, setInLimit] = useState(true);
-
   const [editor] = useState(() => withReact(createEditor()));
 
   const [editorState, setEditorState] = useState(initialValue);
@@ -80,7 +78,8 @@ const StimmeEditor = ({
 
   const [languageValue, setLanguageValue] = useState(initialLaguage);
 
-  const [selectedVoices, setSelectedVoices] = useState<Voice[]>([
+  // TODO: how to solve default personas?
+  const [selectedVoices, setSelectedVoices] = useState<Persona[]>([
     personas[0],
     personas[2],
     personas[3],
@@ -211,8 +210,6 @@ const StimmeEditor = ({
             <Sidebar
               insertSpecialCharacter={insertBreak}
               toggleElement={toggleElement}
-              selectedVoices={selectedVoices}
-              setSelectedVoices={setSelectedVoices}
               personas={personas}
               languageValue={languageValue}
               setLanguageValue={setLanguageValue}
@@ -258,8 +255,8 @@ const StimmeEditor = ({
 
         <div className="p-4 py-4 bg-gray-100 rounded-lg shadow-md h-20 min-w-96">
           <AudioPlayer
-            handleGeneration={handleGeneration}
             pageId={"aaa"}
+            handleGeneration={handleGeneration}
             audioLink={audioLink}
             state={generationState}
           />

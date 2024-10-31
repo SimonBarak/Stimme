@@ -4,10 +4,10 @@ import List from "./generic/List";
 interface VoiceMenuProps {
   toggleElement: (character: string, emotion: string) => void;
   languageValue: string;
-  voices: Voice[];
+  voices: Persona[];
 }
 
-const voiceIntoMenuItem = (item: Voice): Item => {
+const voiceIntoMenuItem = (item: Persona): Item => {
   return {
     id: item.DisplayName,
     name: `${item.DisplayName}`,
@@ -17,14 +17,15 @@ const voiceIntoMenuItem = (item: Voice): Item => {
   };
 };
 
-const voicesIntoMenuItem = (arr: Voice[]): Item[] => arr.map(voiceIntoMenuItem);
+const voicesIntoMenuItem = (arr: Persona[]): Item[] =>
+  arr.map(voiceIntoMenuItem);
 
 const VoiceMenu: React.FC<VoiceMenuProps> = ({
   languageValue,
   toggleElement,
   voices,
 }) => {
-  function filterByLanguage(voices: Voice[], searchTerm: string): Voice[] {
+  function filterByLanguage(voices: Persona[], searchTerm: string): Persona[] {
     const filteredItems = voices.filter((item) =>
       item.LocaleName.toLowerCase().includes(searchTerm.toLowerCase())
     );

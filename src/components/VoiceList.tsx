@@ -13,15 +13,15 @@ import SelectLangLg from "./ui/SelectLangLg";
 
 interface VoiceListProps {
   defaultValue: string;
-  voices: Voice[];
+  voices: Persona[];
   size: "sm" | "lg";
 }
 
-function removeObjectsById(items: Voice[], idsToRemove: string[]): Voice[] {
+function removeObjectsById(items: Persona[], idsToRemove: string[]): Persona[] {
   return items.filter((item) => !idsToRemove.includes(item.ShortName));
 }
 
-const filterItems = (searchTerm: string, items: Voice[]) => {
+const filterItems = (searchTerm: string, items: Persona[]) => {
   const filteredItems = items.filter((item) =>
     item.LocaleName.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -36,7 +36,7 @@ const filterItems = (searchTerm: string, items: Voice[]) => {
   // setRestItems(restItems);
 };
 
-const filterOutItems = (searchTerm: string, items: Voice[]) => {
+const filterOutItems = (searchTerm: string, items: Persona[]) => {
   const filteredItems = items.filter(
     (item) => !item.LocaleName.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -52,10 +52,10 @@ const VoiceList: React.FC<VoiceListProps> = ({
   console.log(voices);
   const [showFixedDiv, setShowFixedDiv] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [filteredItems, setFilteredItems] = useState<Voice[]>(
+  const [filteredItems, setFilteredItems] = useState<Persona[]>(
     filterItems(defaultValue, voices)
   );
-  const [restItems, setRestItems] = useState<Voice[]>(
+  const [restItems, setRestItems] = useState<Persona[]>(
     filterOutItems(defaultValue, voices)
   );
 

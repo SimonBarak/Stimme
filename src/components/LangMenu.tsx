@@ -2,7 +2,7 @@ import SelectLang from "./ui/SelectLang";
 
 interface VoiceListProps {
   def: string;
-  voices: Voice[];
+  voices: Persona[];
   setLanguageValue: (value: string) => void;
 }
 

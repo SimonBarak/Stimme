@@ -6,19 +6,15 @@ import LangMenu from "./LangMenu";
 interface SidebarProps {
   toggleElement: (voice: string, emotion: string) => void;
   insertSpecialCharacter: (input: number) => void;
-  selectedVoices: Voice[];
-  setSelectedVoices: React.Dispatch<React.SetStateAction<Voice[]>>;
   languageValue: string;
   setLanguageValue: React.Dispatch<React.SetStateAction<string>>;
-  personas: Voice[];
+  personas: Persona[];
   // Add any other props you need for the sidebar here
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
   toggleElement,
   insertSpecialCharacter,
-  selectedVoices,
-  setSelectedVoices,
   languageValue,
   setLanguageValue,
   personas,

@@ -6,6 +6,7 @@ import { getVoices } from "@/functions/static";
 
 // Main component for the Voices page
 const Voices = async () => {
+  // TODO FIX THIS SHIT
   const voicesResponse: VoiceResponse[] = (await getVoices()) ?? [];
   const personas = addUIdata(voicesResponse);
 
