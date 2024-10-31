@@ -1,4 +1,4 @@
-import { phonemes } from "../../public/data/phonemes";
+import { phonemes } from "../../data/phonemes";
 
 function mapPhoneme(id: string): TechPhoneme | undefined {
   return phonemes.find((i) => i.id === id);
