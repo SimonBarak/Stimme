@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ListItem from "./generic/ListItem";
-import { phonemes } from "@/data/phonemes";
+import { phonemes } from "../../public/data/phonemes";
 import Popover from "./ui/Popover";
 import PopoverBody from "./ui/PopoverBody";
 import List from "./generic/List";

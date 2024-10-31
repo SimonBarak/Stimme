@@ -1,14 +1,14 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { voices_string } from "@/data/voices_stimme_string.js";
 import { Descendant } from "slate";
 import { addUIdata, validateSchema } from "./helpers";
 
 export async function getFiles(): Promise<SchemaFile[] | undefined> {
-  const filesData = await fs.readFile(
-    process.cwd() + "/schemas/schemas.json",
-    "utf8"
-  );
+  // Define the path to the JSON file from the project root
+  const fullPath = path.join(process.cwd(), "public/data", "schemas.json");
+
+  // Load the JSON file containing voices and emotions
+  const filesData = await fs.readFile(fullPath, "utf8");
 
   const files: SchemaFile[] = JSON.parse(filesData);
 
@@ -53,11 +53,15 @@ export async function getPropsData({ id }: IDObject) {
 // Function to fetch the voices data from a local JSON file
 export async function getVoices(): Promise<VoiceResponse[]> {
   try {
-    // Load the JSON file containing voices and emotions
-    const file = await fs.readFile(
-      process.cwd() + "/src/data/voices_stimme.json",
-      "utf8"
+    // Define the path to the JSON file from the project root
+    const fullPath = path.join(
+      process.cwd(),
+      "public/data",
+      "voices_stimme.json"
     );
+
+    // Load the JSON file containing voices and emotions
+    const file = await fs.readFile(fullPath, "utf8");
 
     // Parse the JSON data into a JavaScript object
     const voicesResponse: VoiceResponse[] = JSON.parse(file);
