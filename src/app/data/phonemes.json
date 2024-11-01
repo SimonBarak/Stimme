@@ -1,0 +1,12 @@
+[
+  { "name": "JavaScript", "phoneme": "ˈdʒɑːvəskrɪpt", "id": "js-1" },
+  { "name": "Python", "phoneme": "ˈpaɪθɒn", "id": "py-2" },
+  { "name": "CSS", "phoneme": "siː ɛs ɛs", "id": "css-4" },
+  { "name": "API", "phoneme": "ˌeɪ.piːˈaɪ", "id": "api-5" },
+  { "name": "Algorithm", "phoneme": "ˈælɡəˌrɪðəm", "id": "alg-6" },
+  { "name": "Backend", "phoneme": "ˈbækˌɛnd", "id": "be-7" },
+  { "name": "Frontend", "phoneme": "ˈfrʌntˌɛnd", "id": "fe-8" },
+  { "name": "Database", "phoneme": "ˈdeɪtəˌbeɪs", "id": "db-9" },
+  { "name": "Framework", "phoneme": "ˈfreɪmˌwɜːrk", "id": "fw-10" },
+  { "name": "Git", "phoneme": "ɡɪt", "id": "git-16" }
+]

@@ -6,14 +6,16 @@ import { auth } from "@/server/auth";
 type EditPropsType = {
   personas: Persona[];
   initialValue: Descendant[];
+  phonemes: TechPhoneme[];
   initialLanguage: string;
 };
 
 export default async function Page() {
-  const postData: EditPropsType = await getPropsData({
+  const postData: EditPropsType = getPropsData({
     id: "de-DE-ConradNeural",
   });
-  const { initialValue, initialLanguage, personas } = postData;
+  const { initialValue, initialLanguage, personas, phonemes } = postData;
+
   const session = await auth();
   const isAuth = session != null;
 
@@ -23,6 +25,7 @@ export default async function Page() {
         initialValue={initialValue}
         initialLaguage={initialLanguage}
         personas={personas}
+        phonemes={phonemes}
         isAuth={isAuth}
       />
     </>

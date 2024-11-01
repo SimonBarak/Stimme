@@ -1,6 +1,7 @@
-import { phonemes } from "../../data/phonemes";
-
-function mapPhoneme(id: string): TechPhoneme | undefined {
+function mapPhoneme(
+  phonemes: TechPhoneme[],
+  id: string
+): TechPhoneme | undefined {
   return phonemes.find((i) => i.id === id);
 }
 
@@ -37,7 +38,8 @@ function replaceBreakMarkers(text: string): string {
 function jsonToSSML(
   schema: any[],
   languageValue: string,
-  personas: Persona[]
+  personas: Persona[],
+  phonemes: TechPhoneme[]
 ): string {
   // Initialize the SSML string with the header
 
@@ -59,7 +61,7 @@ function jsonToSSML(
       paragraph.children.forEach((child: any) => {
         if (child.type) {
           const phonemeKey = child.id;
-          const phoneme = mapPhoneme(phonemeKey);
+          const phoneme = mapPhoneme(phonemes, phonemeKey);
           if (phoneme) {
             const ssmlPhoneme = `<phoneme alphabet="ipa" ph="${phoneme.phoneme}">${child.text}</phoneme>`;
             ssml += ssmlPhoneme;

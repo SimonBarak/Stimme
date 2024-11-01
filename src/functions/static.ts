@@ -1,34 +1,45 @@
-import { promises as fs } from "fs";
+import fs from "fs";
 import path from "path";
 import { Descendant } from "slate";
 import { addUIdata, validateSchema } from "./helpers";
 
-export async function getFiles(): Promise<SchemaFile[] | undefined> {
-  const filesData = await fs.readFile(
-    process.cwd() + "/schemas/schemas.json",
-    "utf8"
+function readFileSync(path: string): string | undefined {
+  try {
+    const data = fs.readFileSync(path, "utf8");
+    return data;
+  } catch (error) {
+    console.error("Error reading file synchronously:", error);
+  }
+}
+
+function readSchemas(): SchemaFile[] {
+  const directory = path.join(
+    process.cwd(),
+    "src",
+    "app",
+    "data",
+    "schemas.json"
   );
 
-  const files: SchemaFile[] = JSON.parse(filesData);
+  const data = readFileSync(directory);
 
-  if (files) {
+  if (data) {
+    const files: SchemaFile[] = JSON.parse(data);
     return files;
   } else {
-    console.error("getVoices");
+    console.error("Error loadign voices");
+    return [];
   }
 }
 
-export async function getFile(id: string) {
-  const files = await getFiles();
-  if (files) {
-    const file = files.find((i) => i.id === id);
-    return file;
-  }
+function getSchema(id: string): SchemaFile | undefined {
+  const files = readSchemas();
+  return files.find((i) => i.id === id);
 }
 
-export async function getPropsData({ id }: IDObject) {
+export function getPropsData({ id }: IDObject) {
   // fetch value from file
-  const initialFile = await getFile(id);
+  const initialFile = getSchema(id);
 
   // fetch value from file
   const defaultValue: Descendant[] = [];
@@ -41,47 +52,65 @@ export async function getPropsData({ id }: IDObject) {
   const initialLanguage = initialFile ? initialFile.lang : defaultLanguage;
 
   // fetch voices from file
-  const voicesResponse: VoiceResponse[] = (await getVoices()) ?? [];
+  const voicesResponse: VoiceResponse[] = getVoices() ?? [];
 
   // create ui objects persona[]
   const personas: Persona[] = addUIdata(voicesResponse);
 
-  return { personas, initialValue, initialLanguage };
+  // create phonemes
+  const phonemes: TechPhoneme[] = getPhonemes();
+
+  return { personas, phonemes, initialValue, initialLanguage };
 }
 
 // Function to fetch the voices data from a local JSON file
-export async function getVoices(): Promise<VoiceResponse[]> {
+export function getVoices(): VoiceResponse[] {
   try {
-    const filesData = await fs.readFile(
-      process.cwd() + "/data/voices_stimme.json",
-      "utf8"
+    const directory = path.join(
+      process.cwd(),
+      "src",
+      "app",
+      "data",
+      "voices.json"
     );
+    const data = readFileSync(directory);
 
-    // Parse the JSON data into a JavaScript object
-    const voicesResponse: VoiceResponse[] = JSON.parse(filesData);
-
-    return voicesResponse;
+    if (data) {
+      // todo: map to voicesResponse
+      const voiceList: VoiceResponse[] = JSON.parse(data);
+      return voiceList;
+    } else {
+      return [];
+    }
   } catch (error) {
     console.error("Error loading voices:", error);
     throw new Error("Error loading voices");
   }
 }
 
-export async function writeJsonFile(
-  fileName: string,
-  data: object
-): Promise<void> {
+// Function to fetch the voices data from a local JSON file
+export function getPhonemes(): TechPhoneme[] {
   try {
-    // Convert the object to a JSON string
-    const jsonString = JSON.stringify(data, null, 2);
+    const directory = path.join(
+      process.cwd(),
+      "src",
+      "app",
+      "data",
+      "phonemes.json"
+    );
+    const data = readFileSync(directory);
 
-    // Define the full file path
-    const filePath = path.join(process.cwd(), fileName);
+    console.log(data);
 
-    // Write the JSON string to the file
-    await fs.writeFile(filePath, jsonString, "utf8");
+    if (data) {
+      // todo: map to voicesResponse
+      const phonemeList: TechPhoneme[] = JSON.parse(data);
+      return phonemeList;
+    } else {
+      return [];
+    }
   } catch (error) {
-    console.error(`Error writing JSON file:`, error);
-    throw new Error("Failed to write JSON file.");
+    console.error("Error loading phonemes:", error);
+    throw new Error("Error loading phonemes");
   }
 }

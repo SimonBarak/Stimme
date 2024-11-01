@@ -6,7 +6,7 @@ import Layout from "./layout";
 import StartButton from "@/components/StartButton";
 
 export default async function Page() {
-  const voicesResponse: VoiceResponse[] = (await getVoices()) ?? [];
+  const voicesResponse: VoiceResponse[] = getVoices();
   const personas = addUIdata(voicesResponse);
 
   return (

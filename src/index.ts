@@ -68,16 +68,6 @@ type RouterParams = {
   params: IDObject;
 };
 
-// type Voice = Item & {
-//   flag: string;
-//   lang: string;
-//   emoji: string;
-//   style: Item;
-//   gender?: string;
-//   sampleUrl?: string;
-//   styles: Item[];
-// };
-
 type TechPhoneme = {
   name: string;
   phoneme: string;

@@ -1,11 +1,8 @@
 import { useState } from "react";
-import ListItem from "./generic/ListItem";
-import { phonemes } from "../../data/phonemes";
-import Popover from "./ui/Popover";
-import PopoverBody from "./ui/PopoverBody";
 import List from "./generic/List";
 
-interface VoiceMenuProps {
+interface PhonemeMenuProps {
+  phonemes: TechPhoneme[];
   toggleLeaf: (value: string) => void;
 }
 
@@ -20,7 +17,7 @@ const phonemeIntoMenuItem = (item: TechPhoneme): Item => {
 const phonemesIntoMenuItem = (arr: TechPhoneme[]): Item[] =>
   arr.map(phonemeIntoMenuItem);
 
-const PhonemeMenu: React.FC<VoiceMenuProps> = ({ toggleLeaf }) => {
+const PhonemeMenu: React.FC<PhonemeMenuProps> = ({ phonemes, toggleLeaf }) => {
   const [phonemeItems, setPhonemeItems] = useState(
     phonemesIntoMenuItem(phonemes)
   );

@@ -1,13 +1,7 @@
 "use client";
 import React, { useCallback, useState } from "react";
 import { createEditor, Descendant, Text, Transforms } from "slate";
-import {
-  Slate,
-  Editable,
-  withReact,
-  RenderLeafProps,
-  RenderElementProps,
-} from "slate-react";
+import { Slate, Editable, withReact, RenderLeafProps } from "slate-react";
 
 // This example is for an Editor with `ReactEditor` and `HistoryEditor`
 import Sidebar from "./sidebar";
@@ -15,7 +9,6 @@ import jsonToSSML from "../functions/schemaToSsml";
 import { fetchTTS } from "@/functions/api";
 import CharacterElement from "./editor/CharacterElement";
 import AudioPlayer from "./Player";
-import PhonemeMenu from "./PhonemeMenu";
 import Loading from "./Loading";
 import Link from "next/link";
 
@@ -23,6 +16,7 @@ import Link from "next/link";
 import { BaseEditor } from "slate";
 import { ReactEditor } from "slate-react";
 import { HistoryEditor } from "slate-history";
+import PhonemeMenu from "./PhonemeMenu";
 
 type CustomElement = {
   type: "paragraph";
@@ -54,6 +48,7 @@ declare module "slate" {
 
 type StimmeEditorType = {
   initialValue: Descendant[];
+  phonemes: TechPhoneme[];
   personas: Persona[];
   initialLaguage: string;
   isAuth: boolean;
@@ -62,6 +57,7 @@ type StimmeEditorType = {
 const StimmeEditor = ({
   initialValue,
   personas,
+  phonemes,
   initialLaguage,
   isAuth,
 }: StimmeEditorType) => {
@@ -120,7 +116,12 @@ const StimmeEditor = ({
   async function handleGeneration() {
     setGenerationState("loading");
     try {
-      const textSSML = jsonToSSML(editorState, languageValue, personas);
+      const textSSML = jsonToSSML(
+        editorState,
+        languageValue,
+        personas,
+        phonemes
+      );
 
       const src = await fetchTTS(textSSML);
 
@@ -231,7 +232,7 @@ const StimmeEditor = ({
         <div className="w-72">
           <div className="fixed top-24 right-5">
             <div className="w-60 bg-gray-100 rounded-lg text-sm shadow-md">
-              <PhonemeMenu toggleLeaf={toggleLeaf} />
+              <PhonemeMenu phonemes={phonemes} toggleLeaf={toggleLeaf} />
             </div>
           </div>
         </div>
