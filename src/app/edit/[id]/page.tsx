@@ -7,11 +7,12 @@ type EditPropsType = {
   personas: Persona[];
   initialValue: Descendant[];
   initialLanguage: string;
+  phonemes: TechPhoneme[];
 };
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const postData: EditPropsType = await getPropsData(params);
-  const { initialValue, initialLanguage, personas } = postData;
+  const postData: EditPropsType = getPropsData(params);
+  const { initialValue, initialLanguage, personas, phonemes } = postData;
   const session = await auth();
   const isAuth = session != null;
 
@@ -20,6 +21,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <StimmeEditor
         initialValue={initialValue}
         initialLaguage={initialLanguage}
+        phonemes={phonemes}
         personas={personas}
         isAuth={isAuth}
       />
