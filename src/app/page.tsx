@@ -25,15 +25,22 @@ export default async function Page() {
             <StartButton />
           </div>
 
-          <div className="px-4 video-container -translate-y-10">
+          <div className="min-w-96 min-h-96 bg-gray-100 rounded-2xl shadow-xl overflow-hidden border-4 border-gray-100">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="background-video rounded-2xl overflow-hidden shadow-xl border-4 border-gray-100"
+              className=" rounded-2xl overflow-hidden "
             >
-              <source src="/videos/product-showcase.mp4" type="video/mp4" />
+              <source
+                src="https://res.cloudinary.com/dhxmg9p4i/video/upload/v1730476281/wavepage/klipp23fiedbtxlm4wli.webm"
+                type="video/webm"
+              />
+              <source
+                src="https://res.cloudinary.com/dhxmg9p4i/video/upload/v1730476584/wavepage/soy2skmjpmtxashueck1.mp4"
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
           </div>
