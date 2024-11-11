@@ -15,15 +15,17 @@ export default async function Page({ params }: { params: { id: string } }) {
   const { initialValue, initialLanguage, personas, phonemes } = postData;
   const session = await auth();
   const isAuth = session != null;
+  const isPro = session?.user?.isPro === true;
 
   return (
     <>
       <StimmeEditor
         initialValue={initialValue}
         initialLaguage={initialLanguage}
-        phonemes={phonemes}
         personas={personas}
+        phonemes={phonemes}
         isAuth={isAuth}
+        isPro={isPro}
       />
     </>
   );

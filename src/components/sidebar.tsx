@@ -4,7 +4,6 @@ import LangMenu from "./LangMenu";
 
 interface SidebarProps {
   toggleElement: (voice: string, emotion: string) => void;
-  insertSpecialCharacter: (input: number) => void;
   languageValue: string;
   setLanguageValue: React.Dispatch<React.SetStateAction<string>>;
   personas: Persona[];

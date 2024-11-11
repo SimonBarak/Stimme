@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createEditor, Descendant, Text, Transforms } from "slate";
 import { Slate, Editable, withReact, RenderLeafProps } from "slate-react";
 
@@ -52,7 +52,8 @@ type StimmeEditorType = {
   phonemes: TechPhoneme[];
   personas: Persona[];
   initialLaguage: string;
-  isUnlocked: boolean;
+  isAuth: boolean;
+  isPro: boolean;
 };
 
 const StimmeEditor = ({
@@ -60,7 +61,8 @@ const StimmeEditor = ({
   personas,
   phonemes,
   initialLaguage,
-  isUnlocked,
+  isAuth,
+  isPro,
 }: StimmeEditorType) => {
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -69,18 +71,15 @@ const StimmeEditor = ({
   const [editorState, setEditorState] = useState(initialValue);
 
   const [generationState, setGenerationState] =
-    useState<GenerationState>("ready");
+    useState<GenerationState>("disabled");
+
+  useEffect(() => {
+    if (isAuth) setGenerationState("ready");
+  }, [isAuth]);
 
   const [audioLink, setAudioLink] = useState("");
 
   const [languageValue, setLanguageValue] = useState(initialLaguage);
-
-  // TODO: how to solve default personas?
-  const [selectedVoices, setSelectedVoices] = useState<Persona[]>([
-    personas[0],
-    personas[2],
-    personas[3],
-  ]);
 
   const renderElement = useCallback((props: CustomRenderElementProps) => {
     return <CharacterElement {...props} />;
@@ -161,8 +160,8 @@ const StimmeEditor = ({
     [editor]
   );
 
-  const unAuthenticateLenght = 200;
-  const authenticateLenght = 1500;
+  const freeLimitLenght = 200;
+  const proLimitLenght = 1500;
 
   function countTextLength(schema: Descendant[]): boolean {
     let totalLength = 0;
@@ -181,9 +180,7 @@ const StimmeEditor = ({
       }
     });
 
-    const limitedLenght = isUnlocked
-      ? authenticateLenght
-      : unAuthenticateLenght;
+    const limitedLenght = isPro ? proLimitLenght : freeLimitLenght;
 
     return totalLength > limitedLenght;
   }
@@ -194,12 +191,12 @@ const StimmeEditor = ({
       initialValue={initialValue}
       onChange={(newValue) => {
         const isToLong = countTextLength(newValue);
-        const errorMessage_Auth = `Create audio in smaller peaces. (Max. ${authenticateLenght} characters)`;
-        const errorMessage_Free = `Free account can generate max. ${unAuthenticateLenght} characters`;
+        const errorMessage_Auth = `Create audio in smaller peaces. (Max. ${proLimitLenght} characters)`;
+        const errorMessage_Free = `Free account can generate max. ${freeLimitLenght} characters`;
 
         if (isToLong) {
           setGenerationState("disabled");
-          setErrorMessage(isUnlocked ? errorMessage_Auth : errorMessage_Free);
+          setErrorMessage(isPro ? errorMessage_Auth : errorMessage_Free);
         } else {
           setGenerationState("ready");
           setErrorMessage("");
@@ -245,7 +242,7 @@ const StimmeEditor = ({
         <Loading isLoading={generationState === "loading"} />
       </div>
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-4 ">
-        {!isUnlocked ? (
+        {!isPro ? (
           <Link
             href={"/pricing"}
             className="p-4 bg-yellow-200 rounded-lg shadow-md mb-2 block"

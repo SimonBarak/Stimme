@@ -54,7 +54,7 @@ export default async function CheckoutFlow() {
                   </a>
                 </div>
               </>
-            ) : session.user.stripeCustomerId ? (
+            ) : session?.user?.stripeCustomerId ? (
               <>
                 <div className="mb-5">
                   <div className="text-lg mb-2">Make one time payment</div>

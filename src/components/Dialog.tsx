@@ -4,13 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 
-const DialogAuth = ({
-  size = "md",
-  children,
-}: {
-  size: string;
-  children: React.ReactNode;
-}) => {
+const DialogAuth = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = React.useState(true);
   const router = useRouter(); // Initialize the router
 
