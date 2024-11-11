@@ -9,7 +9,7 @@ export async function POST(request: Request): Promise<Response> {
 
   const lengthCheck = await checkRequestLength(requestData.text);
 
-  if (lengthCheck.ok) return lengthCheck.response;
+  if (!lengthCheck.ok) return lengthCheck.response;
 
   const generationResult = await handleGeneration(requestData.text);
   if (generationResult.error)
