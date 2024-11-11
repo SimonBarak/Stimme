@@ -1,6 +1,7 @@
 // import { Descendant } from "slate";
 
 type GenerationState = "ready" | "loading" | "disabled" | "error";
+type SubscriptionType = "Free" | "3 Days" | "Pro";
 
 type Translation = {
   lang: string;

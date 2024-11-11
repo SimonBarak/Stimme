@@ -8,8 +8,8 @@ export async function POST(request: Request): Promise<Response> {
     return NextResponse.json({ error: "Wrong data type" }, { status: 400 });
 
   const lengthCheck = await checkRequestLength(requestData.text);
-  if (lengthCheck.error)
-    return NextResponse.json({ error: "Text is too logn" }, { status: 400 });
+
+  if (lengthCheck.ok) return lengthCheck.response;
 
   const generationResult = await handleGeneration(requestData.text);
   if (generationResult.error)
@@ -57,21 +57,38 @@ async function handleRequestData(request: Request): Promise<{
  */
 async function checkRequestLength(
   text: string
-): Promise<{ error?: boolean; response?: Response }> {
+): Promise<{ ok: boolean; response: Response }> {
   const session = await auth();
-  const limit = session ? 10000 : 600;
 
-  if (text.length > limit) {
-    console.warn("Text length exceeds limit");
+  const user = session?.user;
+
+  if (user) {
+    const isPro = session?.user?.isPro;
+    const limit = isPro ? 2000 : 250;
+
+    if (text.length < limit) {
+      return {
+        ok: true,
+        response: Response.json(
+          { error: "Text length is within limit" },
+          { status: 200 }
+        ),
+      };
+    } else {
+      return {
+        ok: false,
+        response: Response.json(
+          { error: "Text length exceeds limit" },
+          { status: 400 }
+        ),
+      };
+    }
+  } else {
     return {
-      error: true,
-      response: NextResponse.json(
-        { error: "Text exceeds length limit" },
-        { status: 400 }
-      ),
+      ok: false,
+      response: Response.json({ error: "Unauthorized user" }, { status: 400 }),
     };
   }
-  return {};
 }
 
 /**

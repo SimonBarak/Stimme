@@ -18,6 +18,9 @@ export default async function Page() {
 
   const session = await auth();
   const isAuth = session != null;
+  //  @ts-ignore
+  const haveSubscription = session?.user.isPro;
+  const isUnlocked = isAuth && haveSubscription;
 
   return (
     <>
@@ -26,7 +29,7 @@ export default async function Page() {
         initialLaguage={initialLanguage}
         personas={personas}
         phonemes={phonemes}
-        isAuth={isAuth}
+        isUnlocked={isUnlocked}
       />
     </>
   );

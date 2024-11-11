@@ -1,18 +1,20 @@
 import Stripe from "stripe";
-import type { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
-function createParams() {
+const testPrice = "price_1QISt8DdBbiTQ6WNXURe4Cyw";
+
+function createParams(customerId: string) {
   const params: Stripe.Checkout.SessionCreateParams = {
+    customer: customerId,
     mode: "payment",
     line_items: [
       {
-        price: "price_1QD3DfDdBbiTQ6WNi4ocBwF4",
+        price: testPrice,
         quantity: 1,
       },
     ],
-    success_url: "https://hlasem.com/edit", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: "https://hlasem.com", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: "https://stimme.pro/edit", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: "https://stimme.pro/checkout", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
   };
 
   return params;
@@ -44,9 +46,18 @@ async function createCheckoutSession(
   }
 }
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
-    const params = createParams();
+    const requestData = await request.json();
+    const consumerId: string = requestData.consumerId;
+    if (!consumerId) {
+      return NextResponse.json(
+        { error: "consumerId is required" },
+        { status: 400 }
+      );
+    }
+
+    const params = createParams(consumerId);
     const session = await createCheckoutSession(params);
     return NextResponse.json(session, { status: 200 });
   } catch (error) {

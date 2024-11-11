@@ -1,14 +1,22 @@
 "use client";
-
 import { fetchPostJSON } from "@/functions/api";
 import getStripe from "@/utils/get-stripejs";
 import Stripe from "stripe";
-import Button from "./ui/Button";
+import { CheckCircledIcon } from "@radix-ui/react-icons";
+import Button from "../ui/Button";
+import { useEffect } from "react";
 
-export default function CheckoutButton() {
+type CreateStripeCheckoutType = {
+  consumerId: string;
+};
+
+export default function CreateStripeCheckout({
+  consumerId,
+}: CreateStripeCheckoutType) {
   const getCheckoutSession = async () => {
     const checkoutSession: Stripe.Checkout.Session = await fetchPostJSON(
-      "/api/checkout_sessions"
+      "/api/checkout_sessions",
+      { consumerId }
     );
 
     if ((checkoutSession as any).statusCode === 500) {
@@ -23,14 +31,15 @@ export default function CheckoutButton() {
     });
 
     if (error) {
-      console.error("we have a error");
-      console.warn(error.message);
+      console.error(error.message);
     }
   };
 
   return (
-    <div className="-">
-      <Button onClick={getCheckoutSession}>Checkout</Button>
-    </div>
+    <>
+      <div className="">
+        <Button onClick={getCheckoutSession}>Pay with card</Button>
+      </div>
+    </>
   );
 }

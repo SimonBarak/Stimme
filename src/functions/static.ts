@@ -100,8 +100,6 @@ export function getPhonemes(): TechPhoneme[] {
     );
     const data = readFileSync(directory);
 
-    console.log(data);
-
     if (data) {
       // todo: map to voicesResponse
       const phonemeList: TechPhoneme[] = JSON.parse(data);

@@ -32,7 +32,7 @@ const PhonemeMenu: React.FC<PhonemeMenuProps> = ({ phonemes, toggleLeaf }) => {
         title="Phonemes"
         initialItems={phonemeItems}
         onApply={onApply}
-        classes={"max-h-96"}
+        classes={"max-h-48"}
       />
     </div>
   );

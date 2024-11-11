@@ -33,6 +33,13 @@ input {
   padding: 36px !important;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.DialogContent.lg {
+  width: 90vw;
+  max-width: 840px;
+  max-height: 75vh;
+}
+
 .DialogContent:focus {
   outline: none;
 }

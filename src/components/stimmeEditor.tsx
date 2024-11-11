@@ -17,6 +17,7 @@ import { BaseEditor } from "slate";
 import { ReactEditor } from "slate-react";
 import { HistoryEditor } from "slate-history";
 import PhonemeMenu from "./PhonemeMenu";
+import BreakMenu from "./BreakMenu";
 
 type CustomElement = {
   type: "paragraph";
@@ -51,7 +52,7 @@ type StimmeEditorType = {
   phonemes: TechPhoneme[];
   personas: Persona[];
   initialLaguage: string;
-  isAuth: boolean;
+  isUnlocked: boolean;
 };
 
 const StimmeEditor = ({
@@ -59,7 +60,7 @@ const StimmeEditor = ({
   personas,
   phonemes,
   initialLaguage,
-  isAuth,
+  isUnlocked,
 }: StimmeEditorType) => {
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -161,7 +162,7 @@ const StimmeEditor = ({
   );
 
   const unAuthenticateLenght = 200;
-  const authenticateLenght = 1000;
+  const authenticateLenght = 1500;
 
   function countTextLength(schema: Descendant[]): boolean {
     let totalLength = 0;
@@ -180,7 +181,9 @@ const StimmeEditor = ({
       }
     });
 
-    const limitedLenght = isAuth ? authenticateLenght : unAuthenticateLenght;
+    const limitedLenght = isUnlocked
+      ? authenticateLenght
+      : unAuthenticateLenght;
 
     return totalLength > limitedLenght;
   }
@@ -191,12 +194,12 @@ const StimmeEditor = ({
       initialValue={initialValue}
       onChange={(newValue) => {
         const isToLong = countTextLength(newValue);
-        const errorMessage_Auth = `Please, create audio in smaller peaces. (Max. ${authenticateLenght} characters)`;
-        const errorMessage_Free = `Text is to long for free testing (Max. ${unAuthenticateLenght} characters)`;
+        const errorMessage_Auth = `Create audio in smaller peaces. (Max. ${authenticateLenght} characters)`;
+        const errorMessage_Free = `Free account can generate max. ${unAuthenticateLenght} characters`;
 
         if (isToLong) {
           setGenerationState("disabled");
-          setErrorMessage(isAuth ? errorMessage_Auth : errorMessage_Free);
+          setErrorMessage(isUnlocked ? errorMessage_Auth : errorMessage_Free);
         } else {
           setGenerationState("ready");
           setErrorMessage("");
@@ -209,7 +212,6 @@ const StimmeEditor = ({
         <div className="w-72">
           <div className="fixed top-24 left-5">
             <Sidebar
-              insertSpecialCharacter={insertBreak}
               toggleElement={toggleElement}
               personas={personas}
               languageValue={languageValue}
@@ -219,7 +221,7 @@ const StimmeEditor = ({
         </div>
         <div className="flex-1 relative">
           {errorMessage != "" ? (
-            <div className=" bg-white fixed m-5 p-5 right-1/2 translate-x-1/2 rounded-lg  ">
+            <div className=" bg-white fixed bottom-44 m-5 p-5 right-1/2 translate-x-1/2 rounded-lg shadow z-10">
               <div className="text-red-400">{errorMessage}</div>
             </div>
           ) : null}
@@ -228,10 +230,12 @@ const StimmeEditor = ({
             renderElement={renderElement}
             renderLeaf={renderLeaf}
           />
+          <div className="h-96"></div>
         </div>
         <div className="w-72">
           <div className="fixed top-24 right-5">
             <div className="w-60 bg-gray-100 rounded-lg text-sm shadow-md">
+              <BreakMenu insertSpecialCharacter={insertBreak} />
               <PhonemeMenu phonemes={phonemes} toggleLeaf={toggleLeaf} />
             </div>
           </div>
@@ -241,13 +245,16 @@ const StimmeEditor = ({
         <Loading isLoading={generationState === "loading"} />
       </div>
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-4 ">
-        {!isAuth ? (
+        {!isUnlocked ? (
           <Link
             href={"/pricing"}
             className="p-4 bg-yellow-200 rounded-lg shadow-md mb-2 block"
           >
             <div className="flex justify-between">
-              <div className="text-lg">€4 for next 3 days</div>
+              <div className="text-lg">
+                <span className="">€19</span>
+                <span className="text-sm">/month</span>
+              </div>
 
               <div className="text-lg">Start now</div>
             </div>

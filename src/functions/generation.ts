@@ -42,7 +42,6 @@ export const textToSpeech = async (
       },
       (error: ISpeechSynthesisError | any) => {
         synthesizer.close();
-        console.error("speakSsmlAsync");
         reject(error);
       }
     );

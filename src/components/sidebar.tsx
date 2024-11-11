@@ -1,6 +1,5 @@
 import React from "react";
 import VoiceMenu from "./VoiceMenu";
-import BreakMenu from "./BreakMenu";
 import LangMenu from "./LangMenu";
 
 interface SidebarProps {
@@ -14,7 +13,6 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({
   toggleElement,
-  insertSpecialCharacter,
   languageValue,
   setLanguageValue,
   personas,
@@ -35,9 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           voices={personas}
         />
       </div>
-      <div className="">
-        <BreakMenu insertSpecialCharacter={insertSpecialCharacter} />
-      </div>
+
       {/* <div className="">
         <FileMenu />
       </div> */}

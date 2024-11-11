@@ -57,7 +57,7 @@ export default async function Page() {
             />
           </div>
         </section>
-        <section className="container mx-auto py-20">
+        <section id="contact" className="container mx-auto py-20">
           <h2 className="px-4 max-w-4xl text-3xl md:text-5xl lg:text-8xl lg:leading-none xl:leading-none mb-6 lg:mb-20 xl:mb-8">
             Contact
           </h2>

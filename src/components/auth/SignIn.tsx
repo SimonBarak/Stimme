@@ -5,11 +5,12 @@ import Button from "../ui/Button";
 export async function SignIn() {
   return (
     <div>
-      <h2 className="DialogTitle text-lg">Authenticate with your email</h2>
-      <p className="DialogDescription">You need to</p>
+      <h2 className="DialogTitle text-lg">Sign in with your email</h2>
+      <p className="DialogDescription">We will send you verification link</p>
       <form
         action={async (formData) => {
           "use server";
+          // TODO: redirect page
           await signIn("nodemailer", formData);
         }}
       >
@@ -22,7 +23,7 @@ export async function SignIn() {
           />
         </div>
         <div>
-          <Button type="submit">Sign in</Button>
+          <Button type="submit">Send email</Button>
         </div>
       </form>
     </div>

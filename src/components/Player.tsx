@@ -31,7 +31,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
     <div className="controls flex gap-2 items-center">
       <div className="-">
         {state === "disabled" ? (
-          <Button onClick={handleGeneration} size="medium" variant="disabled">
+          <Button size="medium" variant="disabled">
             <div className="mr-2">
               <MagicWandIcon />
             </div>

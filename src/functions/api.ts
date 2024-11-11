@@ -151,7 +151,6 @@ export async function fetchTTS(input: string) {
   } catch (error) {
     console.error("Error fetching or playing audio", error);
   }
-  console.count("play");
 }
 //
 //

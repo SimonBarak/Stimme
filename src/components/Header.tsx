@@ -1,6 +1,7 @@
 import Link from "next/link";
 import StartButton from "./StartButton";
-import Authentication from "./Authentication";
+import Authentication from "./auth/Authentication";
+import UserPlan from "./auth/UserPlan";
 
 type HeaderType = {
   showCTS: boolean;

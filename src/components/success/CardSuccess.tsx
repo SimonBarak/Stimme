@@ -1,19 +1,16 @@
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 
-type SuccessType = {
-  email: string;
-};
+type SuccessCardType = {};
 
-export default async function Success({ email }: SuccessType) {
+export default async function SuccessCard({}: SuccessCardType) {
   return (
     <>
       <div className="flex flex-col gap-6 items-center">
         <div className="flex flex-col gap-2 items-center">
           <CheckCircledIcon />
-          <div className="text-2xl">You are signed in!</div>
-          <div>with your email: {email}</div>
+          <div className="text-2xl">Thank you for your payment!</div>
+          <div>You can now continue into editor</div>
         </div>
-
         <div>
           <a
             href="/edit"

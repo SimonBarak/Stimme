@@ -55,7 +55,7 @@ const VoiceMenu: React.FC<VoiceMenuProps> = ({
           title="Voice Styles"
           initialItems={voiceItems}
           onApply={onApply}
-          classes={"max-h-28"}
+          classes={"max-h-56"}
         />
       </div>
     </div>
