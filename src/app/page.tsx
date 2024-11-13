@@ -22,7 +22,7 @@ export default async function Page() {
             Create high-quality audio in your own language
           </p>
           <div className="px-4 mb-40">
-            <StartButton />
+            <StartButton size={"large"} href={"/edit"} />
           </div>
 
           <div className="min-w-96 min-h-96 bg-gray-100 rounded-2xl shadow-xl overflow-hidden border-4 border-gray-100">

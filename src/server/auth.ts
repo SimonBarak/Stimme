@@ -11,7 +11,7 @@ const credential = new AzureNamedKeyCredential(
 
 const tableClient = new TableClient(
   process.env.AUTH_AZURE_TABLES_ENDPOINT ?? "",
-  "test",
+  process.env.AUTH_AZURE_TABLE_NAME ?? "testAuth",
   credential
 );
 
@@ -23,6 +23,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   adapter: TableStorageAdapter(tableClient),
+  // callbacks: {
+  //   async signIn({ user, account, profile }) {
+  //     // Return a specific URL or `null` to skip the redirect to the "Check your email" page
+  //     return "/edit"; // Set your custom redirect URL here
+  //   },
+  // },
   events: {
     signIn: async ({ user }) => {
       console.log(user);

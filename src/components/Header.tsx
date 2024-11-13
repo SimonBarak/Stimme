@@ -13,12 +13,12 @@ export default function Header({ showCTS = false }: HeaderType) {
       <div className="p-5 py-6">
         <div className="flex items-center">
           <div className="grow">
-            <Link href={"/"}>Stimme.pro</Link>
+            <Link href={"/"}>Stimme.studio</Link>
           </div>
           <div></div>
           <nav className="flex gap-6 items-center">
             <Authentication />
-            {showCTS ? <StartButton /> : null}
+            {showCTS ? <StartButton size={"medium"} href={"/edit"} /> : null}
           </nav>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use server";
 import { auth } from "@/server/auth";
-import { SignIn } from "./SignIn";
+import { SignInForm } from "./SignIn";
 import Success from "./Success";
 
 // TODO: how to solve signIn flow?
@@ -14,6 +14,6 @@ export default async function SignFlow() {
 
     return <Success email={email} />;
   } else {
-    return <SignIn />;
+    return <SignInForm />;
   }
 }

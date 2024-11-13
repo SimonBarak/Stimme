@@ -5,7 +5,6 @@
   flex: 1;
   border-radius: 4px;
   padding: 0 10px;
-  font-size: 13px;
   line-height: 1;
   color: var(--gray-11);
   box-shadow: 0 0 0 1px var(--gray-7);
@@ -17,7 +16,6 @@
 }
 
 .Input-lg {
-  font-size: 1.125rem;
   height: 50px;
   width: 20rem;
 }

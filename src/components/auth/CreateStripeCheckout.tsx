@@ -7,10 +7,12 @@ import Button from "../ui/Button";
 import { useEffect } from "react";
 
 type CreateStripeCheckoutType = {
-  consumerId: string;
+  disabled: boolean;
+  consumerId: string | undefined;
 };
 
 export default function CreateStripeCheckout({
+  disabled,
   consumerId,
 }: CreateStripeCheckoutType) {
   const getCheckoutSession = async () => {
@@ -38,7 +40,13 @@ export default function CreateStripeCheckout({
   return (
     <>
       <div className="">
-        <Button onClick={getCheckoutSession}>Pay with card</Button>
+        <Button
+          onClick={getCheckoutSession}
+          disabled={disabled}
+          variant={disabled ? "default" : "ghost"}
+        >
+          Pay with Card
+        </Button>
       </div>
     </>
   );

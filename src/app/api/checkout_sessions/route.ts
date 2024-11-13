@@ -1,7 +1,7 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
-const testPrice = "price_1QISt8DdBbiTQ6WNXURe4Cyw";
+const testPrice = "price_1QKiThDdBbiTQ6WNg4bN0dQU";
 
 function createParams(customerId: string) {
   const params: Stripe.Checkout.SessionCreateParams = {

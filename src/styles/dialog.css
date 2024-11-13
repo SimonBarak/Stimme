@@ -48,7 +48,7 @@ input {
   margin: 0;
   font-weight: 500;
   color: var(--mauve-12);
-  font-size: 17px;
+  font-size: 1.125rem;
 }
 
 .DialogDescription {
