@@ -33,20 +33,30 @@ export async function POST(req: Request) {
     );
   }
 
-  // Handle the checkout.session.completed event
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
-    const stripeCustomerId = session.customer as string;
+  // Handle the event
+  switch (event.type) {
+    case "checkout.session.completed":
+      const checkoutSessionPaymentSucceeded = event.data
+        .object as Stripe.Checkout.Session;
+      const stripeCustomerId =
+        checkoutSessionPaymentSucceeded.customer as string;
 
-    try {
-      const response = await updateUserIsPro(stripeCustomerId);
-    } catch (error) {
-      console.error("Error updating user:", error);
-      return NextResponse.json(
-        { error: "Error updating user" },
-        { status: 500 }
-      );
-    }
+      try {
+        const response = await updateUserIsPro(stripeCustomerId);
+      } catch (error) {
+        console.error("Error updating user:", error);
+        return NextResponse.json(
+          { error: "Error updating user" },
+          { status: 500 }
+        );
+      }
+
+      break;
+    case "checkout.session.expired":
+      console.error("Error in checkout: ", "checkout session expired");
+      break;
+    default:
+      console.log(`Unhandled event type ${event.type}`);
   }
 
   // Respond to Stripe

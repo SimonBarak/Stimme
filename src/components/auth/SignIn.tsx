@@ -39,7 +39,7 @@ export function SignInForm() {
 
       if (response.ok) {
         setIsVerified(true);
-        setStatusMsg("User is Verified.");
+        // setStatusMsg("Email is on the way");
       } else {
         setStatusMsg(result.message || "Failed to send verification email.");
       }
