@@ -18,19 +18,21 @@ export type AudioPlayerProps = {
   audioLink: string;
   pageId: string;
   state: GenerationState;
+  isAuth: boolean;
   handleGeneration: () => Promise<void>;
 };
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({
   audioLink,
   state,
+  isAuth,
   pageId,
   handleGeneration,
 }) => {
   return (
     <div className="controls flex gap-2 items-center">
       <div className="-">
-        {state === "disabled" ? (
+        {isAuth ? (
           <Button size="medium" variant="disabled">
             <div className="mr-2">
               <MagicWandIcon />

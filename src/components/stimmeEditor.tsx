@@ -264,6 +264,7 @@ const StimmeEditor = ({
             handleGeneration={handleGeneration}
             audioLink={audioLink}
             state={generationState}
+            isAuth={isAuth}
           />
         </div>
       </div>

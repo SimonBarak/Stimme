@@ -13,8 +13,8 @@ function createParams(customerId: string) {
         quantity: 1,
       },
     ],
-    success_url: "https://stimme.pro/edit", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: "https://stimme.pro/checkout", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: "https://stimme.studio/edit", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: "https://stimme.studio/checkout", //`${origin}/result?session_id={CHECKOUT_SESSION_ID}`,
   };
 
   return params;
