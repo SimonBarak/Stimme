@@ -1,15 +1,15 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
-const testPrice = "price_1QKiThDdBbiTQ6WNg4bN0dQU";
-
 function createParams(customerId: string) {
+  const price = process.env.AUTH_BASE_PRICE_ID ?? "";
+
   const params: Stripe.Checkout.SessionCreateParams = {
     customer: customerId,
     mode: "payment",
     line_items: [
       {
-        price: testPrice,
+        price: price,
         quantity: 1,
       },
     ],

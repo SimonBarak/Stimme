@@ -39,7 +39,7 @@ export function SignInForm() {
 
       if (response.ok) {
         setIsVerified(true);
-        setTimeout(() => console.log("client"), 2000);
+        setStatusMsg("User is Verified.");
       } else {
         setStatusMsg(result.message || "Failed to send verification email.");
       }

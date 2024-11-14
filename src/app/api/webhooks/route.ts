@@ -24,6 +24,7 @@ export async function POST(req: Request) {
       sig,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
+    console.info(`Event is constructed`);
   } catch (err: any) {
     console.error(`Webhook Error: ${err.message}`);
     return NextResponse.json(

@@ -30,9 +30,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   //   },
   // },
   events: {
-    signIn: async ({ user }) => {
-      console.log(user);
-    },
+    // signIn: async ({ user }) => {
+    //   console.log(user);
+    // },
     createUser: async ({ user }) => {
       // @ts-ignore
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
