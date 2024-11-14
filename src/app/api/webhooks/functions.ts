@@ -7,7 +7,7 @@ const credential = new AzureNamedKeyCredential(
 
 const userUpdateClient = new TableClient(
   process.env.AUTH_AZURE_TABLES_ENDPOINT ?? "",
-  process.env.AUTH_AZURE_TABLE_NAME ?? "AuthTest",
+  process.env.AUTH_AZURE_TABLE_NAME ?? "testAuth",
   credential
 );
 
