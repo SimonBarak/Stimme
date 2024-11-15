@@ -7,23 +7,22 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function POST(req: Request) {
   const sig = req.headers.get("stripe-signature");
   const body = await req.text();
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-  let event;
+  let event: Stripe.Event;
 
-  // Check for the Stripe signature header
-  if (!sig) {
-    return NextResponse.json(
-      { error: "Missing stripe-signature header" },
-      { status: 400 }
-    );
+  try {
+    if (!sig || !webhookSecret)
+      return new Response("Webhook secret not found.", { status: 400 });
+    event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
+    console.log(`🔔  Webhook received: ${event.type}`);
+  } catch (err: any) {
+    console.log(`❌ Error message: ${err.message}`);
+    return new Response(`Webhook Error: ${err.message}`, { status: 400 });
   }
 
   try {
-    event = stripe.webhooks.constructEvent(
-      body,
-      sig,
-      process.env.STRIPE_WEBHOOK_SECRET!
-    );
+    event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
     console.info(`Event is constructed`);
   } catch (err: any) {
     console.error(`Webhook Error: ${err.message}`);
