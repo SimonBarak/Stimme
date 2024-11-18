@@ -1,5 +1,3 @@
-// pages/api/auth/signIn.js
-
 import { signIn } from "@/server/auth"; // Adjust the import path as needed
 import { NextResponse } from "next/server";
 import validator from "validator";

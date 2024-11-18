@@ -4,7 +4,7 @@ import DialogAuth from "@/components/DialogAuth";
 
 export default function LoginModal() {
   return (
-    <DialogAuth>
+    <DialogAuth title={"Sign in with your email"}>
       <SignFlow />
     </DialogAuth>
   );

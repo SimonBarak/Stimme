@@ -9,9 +9,7 @@ import personIcon from "../../../public/img/person-circle.svg";
 export default async function Authentication() {
   const session = await auth();
   const email = session?.user?.email ?? "";
-  const subscription: SubscriptionType = "Free";
-  //@ts-ignore
-  const isPro = session?.user?.isPro;
+  const isPro = session?.user?.isPro === true ? true : false;
 
   if (session) {
     return (

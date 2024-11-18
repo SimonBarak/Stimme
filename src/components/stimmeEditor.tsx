@@ -10,7 +10,6 @@ import { fetchTTS } from "@/functions/api";
 import CharacterElement from "./editor/CharacterElement";
 import AudioPlayer from "./Player";
 import Loading from "./Loading";
-import Link from "next/link";
 
 // This example is for an Editor with `ReactEditor` and `HistoryEditor`
 import { BaseEditor } from "slate";

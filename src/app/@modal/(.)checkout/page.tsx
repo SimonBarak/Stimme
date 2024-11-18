@@ -3,7 +3,7 @@ import DialogAuth from "@/components/DialogAuth";
 
 export default function LoginModal() {
   return (
-    <DialogAuth>
+    <DialogAuth title={"Checkout"}>
       <CheckoutFlow />
     </DialogAuth>
   );

@@ -10,7 +10,6 @@ export default async function SignFlow() {
   if (session) {
     //@ts-ignore
     const { email } = session.user;
-    //@ts-ignore
 
     return <Success email={email} />;
   } else {

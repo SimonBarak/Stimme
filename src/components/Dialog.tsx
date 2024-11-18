@@ -26,7 +26,7 @@ const DialogAuth = ({ children }: { children: React.ReactNode }) => {
           className="DialogContent lg"
           aria-describedby={undefined}
         >
-          <Dialog.Title className="DialogTitle"></Dialog.Title>
+          <Dialog.Title className="DialogTitle">{""}</Dialog.Title>
           <>{children}</>
           <Dialog.Close asChild>
             <button className="CloseButton" aria-label="Close">
