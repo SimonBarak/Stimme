@@ -30,7 +30,7 @@ export default async function Authentication() {
         <Popover.Portal>
           <Popover.Content className="PopoverContent" sideOffset={5}>
             <p className="label text-sm mb-4"></p>
-            <AccountBoard email={email} subscriptionType={subscription} />
+            <AccountBoard email={email} isPro={isPro} />
             <Popover.Close className="PopoverClose" aria-label="Close">
               <Cross2Icon />
             </Popover.Close>

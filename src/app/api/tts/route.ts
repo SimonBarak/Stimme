@@ -62,11 +62,15 @@ async function checkRequestLength(
 
   const user = session?.user;
 
+  console.log(text.length);
   if (user) {
     const isPro = session?.user?.isPro;
-    const limit = isPro ? 2000 : 250;
+    console.log("isPro: ", isPro);
+    const limit = isPro ? 2000 : 400;
+    console.log("limit: ", limit);
 
     if (text.length < limit) {
+      console.log("Text length is within limit");
       return {
         ok: true,
         response: Response.json(
@@ -75,6 +79,7 @@ async function checkRequestLength(
         ),
       };
     } else {
+      console.log("Text length exceeds limit");
       return {
         ok: false,
         response: Response.json(

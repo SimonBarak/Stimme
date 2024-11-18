@@ -18,6 +18,7 @@ import { ReactEditor } from "slate-react";
 import { HistoryEditor } from "slate-history";
 import PhonemeMenu from "./PhonemeMenu";
 import BreakMenu from "./BreakMenu";
+import PricingLink from "./pricing/PricingLink";
 
 type CustomElement = {
   type: "paragraph";
@@ -54,6 +55,7 @@ type StimmeEditorType = {
   initialLaguage: string;
   isAuth: boolean;
   isPro: boolean;
+  initialAudioLink: string;
 };
 
 const StimmeEditor = ({
@@ -63,6 +65,7 @@ const StimmeEditor = ({
   initialLaguage,
   isAuth,
   isPro,
+  initialAudioLink,
 }: StimmeEditorType) => {
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -77,7 +80,7 @@ const StimmeEditor = ({
     if (isAuth) setGenerationState("ready");
   }, [isAuth]);
 
-  const [audioLink, setAudioLink] = useState("");
+  const [audioLink, setAudioLink] = useState(initialAudioLink);
 
   const [languageValue, setLanguageValue] = useState(initialLaguage);
 
@@ -217,11 +220,6 @@ const StimmeEditor = ({
           </div>
         </div>
         <div className="flex-1 relative">
-          {errorMessage != "" ? (
-            <div className=" bg-white fixed bottom-44 m-5 p-5 right-1/2 translate-x-1/2 rounded-lg shadow z-10">
-              <div className="text-red-400">{errorMessage}</div>
-            </div>
-          ) : null}
           <Editable
             className="mt-24 m-5 p-5"
             renderElement={renderElement}
@@ -241,22 +239,13 @@ const StimmeEditor = ({
       <div className="fixed flex justify-center bottom-56 md:bottom-56 left-0 right-0 z-10 pointer-events-none">
         <Loading isLoading={generationState === "loading"} />
       </div>
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-4 ">
-        {!isPro ? (
-          <Link
-            href={"/pricing"}
-            className="p-4 bg-yellow-200 rounded-lg shadow-md mb-2 block"
-          >
-            <div className="flex justify-between">
-              <div className="text-lg">
-                <span className="">€19</span>
-                <span className="text-sm">/month</span>
-              </div>
-
-              <div className="text-lg">Start now</div>
-            </div>
-          </Link>
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-10">
+        {errorMessage != "" ? (
+          <div className=" p-4 bg-red-400 rounded-lg shadow-md mb-2 block">
+            <div className="text-white">{errorMessage}</div>
+          </div>
         ) : null}
+        <PricingLink isPro={isPro} isAuth={isAuth} />
 
         <div className="p-4 py-4 bg-gray-100 rounded-lg shadow-md h-20 min-w-96">
           <AudioPlayer

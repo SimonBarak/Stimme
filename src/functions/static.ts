@@ -60,7 +60,15 @@ export function getPropsData({ id }: IDObject) {
   // create phonemes
   const phonemes: TechPhoneme[] = getPhonemes();
 
-  return { personas, phonemes, initialValue, initialLanguage };
+  const initialAudioLink: string = initialFile ? initialFile.initialAudio : "";
+
+  return {
+    personas,
+    phonemes,
+    initialValue,
+    initialLanguage,
+    initialAudioLink,
+  };
 }
 
 // Function to fetch the voices data from a local JSON file

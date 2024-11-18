@@ -8,17 +8,35 @@ type EditPropsType = {
   initialValue: Descendant[];
   phonemes: TechPhoneme[];
   initialLanguage: string;
+  initialAudioLink: string;
 };
 
 export default async function Page() {
   const postData: EditPropsType = getPropsData({
     id: "de-DE-ConradNeural",
   });
-  const { initialValue, initialLanguage, personas, phonemes } = postData;
+
+  const {
+    initialValue,
+    initialLanguage,
+    personas,
+    phonemes,
+    initialAudioLink,
+  } = postData;
 
   const session = await auth();
-  const isAuth = session != null;
-  const isPro = session?.user?.isPro === true;
+
+  // console.log("Session:", session);
+  // if (session) {
+  //   console.log("User Data:", session.user);
+  //   console.log("Is Pro User:", session.user?.isPro);
+  // } else {
+  //   console.log("No session found, user is not authenticated.");
+  // }
+
+  const isAuth = Boolean(session);
+
+  const isPro = isAuth && session?.user?.isPro === true;
 
   return (
     <>
@@ -29,6 +47,7 @@ export default async function Page() {
         phonemes={phonemes}
         isAuth={isAuth}
         isPro={isPro}
+        initialAudioLink={initialAudioLink}
       />
     </>
   );

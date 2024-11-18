@@ -18,7 +18,13 @@ export default function Header({ showCTS = false }: HeaderType) {
           <div></div>
           <nav className="flex gap-6 items-center">
             <Authentication />
-            {showCTS ? <StartButton size={"medium"} href={"/edit"} /> : null}
+            {showCTS ? (
+              <StartButton
+                size={"medium"}
+                href={"/edit"}
+                text={"Create recording"}
+              />
+            ) : null}
           </nav>
         </div>
       </div>

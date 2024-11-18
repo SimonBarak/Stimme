@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { createAudioLink } from "../functions/helpers.js";
+// import { createAudioLink } from "../functions/helpers.js";
 import {
   CheckIcon,
   MagicWandIcon,
@@ -30,16 +30,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
   handleGeneration,
 }) => {
   return (
-    <div className="controls flex gap-2 items-center">
+    <div className="controls flex gap-2 items-center justify-center h-full">
       <div className="-">
-        {isAuth ? (
-          <Button size="medium" variant="disabled">
-            <div className="mr-2">
-              <MagicWandIcon />
-            </div>
-            Generate
-          </Button>
-        ) : state === "loading" ? (
+        {!isAuth ? null : state === "loading" ? (
           <div className="flex justify-center bg-gray-200 w-20 py-3 rounded">
             <div className="animate-spin">
               <ReloadIcon />
@@ -52,7 +45,14 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
             </div>
             Generate
           </Button>
-        ) : null}
+        ) : (
+          <Button variant="ghost" disabled={true} size="medium">
+            <div className="mr-2">
+              <MagicWandIcon />
+            </div>
+            Generate
+          </Button>
+        )}
       </div>
 
       {audioLink ? (

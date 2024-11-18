@@ -1,7 +1,7 @@
 // import { Descendant } from "slate";
 
 type GenerationState = "ready" | "loading" | "disabled" | "error";
-type SubscriptionType = "Free" | "3 Days" | "Pro";
+type SubscriptionType = "Free" | "Pro";
 
 type Translation = {
   lang: string;
@@ -51,6 +51,7 @@ type DescendantUseOnlyInIndex = {
 
 type SchemaFile = {
   id: string;
+  initialAudio: string;
   lang: string;
   schema: DescendantUseOnlyInIndex[];
 };

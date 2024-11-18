@@ -31,7 +31,7 @@ export default async function CheckoutFlow() {
         </div>
         <div>
           {flowsState.signIn.finished ? (
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center text-green-500 my-10">
               <CheckCircledIcon />
               <div className="text-lg">You are signed in</div>
             </div>
@@ -49,18 +49,12 @@ export default async function CheckoutFlow() {
         <div>
           {flowsState.payment.finished ? (
             <>
-              <div className="mb-8 flex gap-2 items-center">
+              <div className="mb-8 flex gap-2 items-center text-green-500 my-10">
                 <CheckCircledIcon />
                 <div className="text-lg">
                   {"You've upgraded to a professional account"}
                 </div>
               </div>
-              <a
-                href="/edit"
-                className="bg-yellow-200 hover:bg-yellow-300 px-6 py-3 text-lg inline-flex items-center justify-center rounded-md transition-all cursor-pointer text-black"
-              >
-                Create recording
-              </a>
             </>
           ) : (
             <>
@@ -85,6 +79,24 @@ export default async function CheckoutFlow() {
           )}
         </div>
       </div>
+
+      {flowsState.payment.finished ? (
+        <div className="mb-8">
+          <div className="mb-8">
+            <span className="text-sm font-semibold text-gray-500">
+              CONTINUE
+            </span>
+          </div>
+          <div>
+            <a
+              href="/edit"
+              className="bg-yellow-200 hover:bg-yellow-300 px-6 py-3 text-lg inline-flex items-center justify-center rounded-md transition-all cursor-pointer text-black"
+            >
+              Create recording
+            </a>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

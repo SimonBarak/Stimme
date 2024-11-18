@@ -12,7 +12,6 @@ const userUpdateClient = new TableClient(
 );
 
 export async function updateUserIsPro(stripeCustomerId: string): Promise<void> {
-  console.log("update user as pro user");
   try {
     // Retrieve the user entity by filtering with stripeCustomerId
     const entities = userUpdateClient.listEntities({

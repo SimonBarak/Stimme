@@ -5,9 +5,10 @@ type Size = "small" | "medium" | "large" | "huge";
 type SuccessType = {
   size: Size;
   href: string;
+  text: string;
 };
 
-export default function StartButton({ href, size }: SuccessType) {
+export default function StartButton({ href, size, text }: SuccessType) {
   const baseClasses =
     "inline-flex items-center justify-center rounded-md transition-all cursor-pointer flex gap-1";
 
@@ -27,7 +28,7 @@ export default function StartButton({ href, size }: SuccessType) {
   return (
     <div className="">
       <Link href={href} className={classes}>
-        Create recording
+        {text}
       </Link>
     </div>
   );

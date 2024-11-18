@@ -3,57 +3,27 @@ import React from "react";
 import Button from "../ui/Button";
 import { signOut } from "@/server/auth";
 import Link from "next/link";
+import StartButton from "../StartButton";
 
 interface AccountBoardProps {
   email: string;
-  subscriptionType: SubscriptionType;
+  isPro: boolean;
 }
 
-const AccountBoard: React.FC<AccountBoardProps> = ({
-  email,
-  subscriptionType,
-}) => {
-  const handleSignOut = async () => {
-    //setIsLoading(true);
-
-    try {
-      const response = await fetch("/api/auth/signout", {
-        method: "POST",
-      });
-
-      if (response.ok) {
-        // Redirect or refresh the page after sign out
-        //window.location.reload();
-      } else {
-        console.error("Sign out failed");
-      }
-    } catch (error) {
-      console.error("Error signing out", error);
-    } finally {
-      //setIsLoading(false);
-    }
-  };
-
+const AccountBoard: React.FC<AccountBoardProps> = ({ email, isPro }) => {
   return (
     <div>
       <div>
-        {/* <p className="mb-4">
-          <span>Plan:</span> {subscriptionType}
-        </p> */}
         <div className="mb-4">
           <p className="-">
-            <span className="font-bold">{subscriptionType}</span>
-          </p>
-          <p className="text-sm text-gray-400">
-            Free plan enable user to text voices. For full access change our
-            plan
+            <span className="font-bold">
+              {isPro ? "Proffesional Plan" : "Free Plan"}
+            </span>
           </p>
         </div>
       </div>
       <div className="mb-10">
-        <Link href={"/pricing"} className="px-4 py-2 bg-yellow-200 rounded-lg">
-          Change plan
-        </Link>
+        <StartButton size={"medium"} href={"/pricing"} text={"Change Plan"} />
       </div>
 
       <p className="mb-4">
