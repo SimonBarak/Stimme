@@ -12,7 +12,7 @@ export default function Header({ showCTS = false }: HeaderType) {
     <div className="fixed top-0 w-full">
       <div className="p-5 py-6">
         <div className="flex items-center">
-          <div className="grow">
+          <div className="grow font-bold">
             <Link href={"/"}>Stimme.studio</Link>
           </div>
           <div></div>

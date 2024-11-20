@@ -5,7 +5,7 @@ export default function Pricing() {
     <div className="flex">
       <div className="- border-r w-1/3 pr-8">
         <div className="border-b">
-          <div className="pb-8 font-bold text-lg">Test use</div>
+          <div className="pb-8 font-bold text-lg">Only testing</div>
         </div>
         <div className="border-b">
           <div className="py-8">
@@ -15,9 +15,9 @@ export default function Pricing() {
         <div className="py-8">
           <div className="-">
             <ol className="list-disc">
-              <li>Simple Signin</li>
-              <li>1000 characters per file</li>
-              <li>100 000 characters limit</li>
+              <li>Simple Sign In</li>
+              <li>All languages</li>
+              <li>200 characters per file</li>
             </ol>
           </div>
         </div>
@@ -29,7 +29,7 @@ export default function Pricing() {
       </div>
       <div className="- border-r w-1/3 px-8">
         <div className="border-b">
-          <div className="pb-8 font-bold text-lg">Simple use</div>
+          <div className="pb-8 font-bold text-lg">One-time</div>
         </div>
         <div className="border-b">
           <div className="py-8">
@@ -41,7 +41,7 @@ export default function Pricing() {
         <div className="py-8">
           <div className="-">
             <ol className="list-disc">
-              <li>Active for next month</li>
+              <li>Active for one month</li>
               <li>1 000 characters per file</li>
               <li>100 000 characters limit</li>
             </ol>

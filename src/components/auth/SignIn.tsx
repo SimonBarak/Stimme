@@ -53,6 +53,7 @@ export function SignInForm() {
 
   return (
     <div>
+      <h1 className="text-lg mb-2">Sign in with your email</h1>
       <p className="DialogDescription">
         No password is needed—we’ll send you a verification link to your inbox.
       </p>

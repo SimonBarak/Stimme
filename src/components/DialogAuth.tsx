@@ -29,7 +29,7 @@ const DialogAuth = ({
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
-          <Dialog.Title className="DialogTitle">{title}</Dialog.Title>
+          <Dialog.Title className="DialogTitle">{""}</Dialog.Title>
           <>{children}</>
           <Dialog.Close asChild>
             <button className="CloseButton" aria-label="Close">
