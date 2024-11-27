@@ -34,7 +34,7 @@ export default function Pricing() {
         <div className="border-b">
           <div className="py-8">
             <div className="text-4xl">
-              €19<span className="text-sm text-gray-400">/month</span>
+              470 kč<span className="text-sm text-gray-400">/month</span>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Pricing() {
         <div className="border-b">
           <div className="py-8">
             <div className="text-4xl">
-              €190<span className="text-sm text-gray-400">/year</span>
+              4 700 kč<span className="text-sm text-gray-400">/year</span>
             </div>
           </div>
         </div>
