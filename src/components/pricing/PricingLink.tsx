@@ -12,7 +12,7 @@ const PricingLink: React.FC<PricingLinkType> = ({ isPro, isAuth }) => {
   const content = isAuth ? (
     <div className="flex justify-between">
       <div className="text-lg">
-        <span>470 kč</span>
+        <span>€19</span>
         <span className="text-sm">/month</span>
       </div>
       <div className="text-lg">Start now</div>

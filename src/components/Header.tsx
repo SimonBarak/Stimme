@@ -13,7 +13,7 @@ export default function Header({ showCTS = false }: HeaderType) {
       <div className="p-5 py-6">
         <div className="flex items-center">
           <div className="grow font-bold">
-            <Link href={"/"}>Hlasem.com</Link>
+            <Link href={"/"}>Stimme.studio</Link>
           </div>
           <div></div>
           <nav className="flex gap-6 items-center">

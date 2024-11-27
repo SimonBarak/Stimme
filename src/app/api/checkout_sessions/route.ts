@@ -13,8 +13,8 @@ function createParams(customerId: string) {
         quantity: 1,
       },
     ],
-    success_url: "https://hlasem.com/checkout",
-    cancel_url: "https://hlasem.com/checkout",
+    success_url: "https://stimme.studio/checkout",
+    cancel_url: "https://stimme.studio/checkout",
   };
 
   return params;
