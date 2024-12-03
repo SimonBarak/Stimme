@@ -1,6 +1,18 @@
 import { Descendant } from "slate";
 import { getVoices } from "./static";
 
+const avaibleThumbNails = [
+  "Conrad",
+  "Gisela",
+  "Kasper",
+  "Amala",
+  "Bernd",
+  "Christoph",
+  "Elke",
+  "Killian",
+  "Klarissa",
+];
+
 const bucketUrl = "https://wavepagestorage.blob.core.windows.net/audiofiles/";
 
 // Define a utility function to ensure the schema is of the correct type
@@ -17,8 +29,8 @@ export const createAudioLink = (pageId: string) => {
   return bucketUrl + pageId + ".mp3";
 };
 
-export const mapCharacter = async (displayName: string) => {
-  const voicesResponse: VoiceResponse[] = (await getVoices()) ?? [];
+export const mapCharacter = (displayName: string) => {
+  const voicesResponse: VoiceResponse[] = getVoices() ?? [];
   const characterResponse = voicesResponse.find(
     (character) => character.DisplayName === displayName
   );
@@ -30,15 +42,6 @@ export const mapCharacter = async (displayName: string) => {
     return addAvatar(voicesResponse[0], 0);
   }
 };
-
-// export const mapStyle = (color: string) => {
-//   return "happy";
-// };
-
-// Helper function to map gender from CharacterResponse to Character
-function mapGender(gender: string): string {
-  return gender.toLowerCase();
-}
 
 export function toggleItemById(array: ToggleItem[], id: string): ToggleItem[] {
   // Find the index of the item with the specified id
@@ -76,16 +79,25 @@ export const inputItemToItemToggle = (
     };
   });
 
-export const addAvatar = (
-  voiceResponse: VoiceResponse,
-  index: number
-): Persona => {
+const addAvatar = (voiceResponse: VoiceResponse, index: number): Persona => {
   const gender = voiceResponse.Gender === "Male" ? "a" : "b";
   const avatarNumber = index + 1;
   const avatarUrl = `/img/avatars/${gender}${avatarNumber}.png`;
   const voice: Persona = { ...voiceResponse, avatar: avatarUrl };
   return voice;
 };
+
+const addThumbImage = (persona: Persona): Persona => {
+  if (avaibleThumbNails.includes(persona.DisplayName)) {
+    return {
+      ...persona,
+      thumbImage: `/img/thumbnails/${persona.DisplayName}.png`,
+    };
+  }
+  return persona;
+};
+
+const addThumbImages = (personas: Persona[]) => personas.map(addThumbImage);
 
 function addAvatars(voices: VoiceResponse[]) {
   const groupedItems = chunkArray(voices);
@@ -99,5 +111,8 @@ function addAvatars(voices: VoiceResponse[]) {
 
 export function addUIdata(voices: VoiceResponse[]): Persona[] {
   const voicesWithAvatars: Persona[] = addAvatars(voices);
-  return voicesWithAvatars;
+  const voicesWithThumbNails: Persona[] = addThumbImages(voicesWithAvatars);
+
+  console.log(voicesWithThumbNails);
+  return voicesWithThumbNails;
 }

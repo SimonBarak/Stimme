@@ -7,7 +7,7 @@ import StartButton from "@/components/StartButton";
 
 export default async function Page() {
   const voicesResponse: VoiceResponse[] = getVoices();
-  const personas = addUIdata(voicesResponse);
+  const personas: Persona[] = addUIdata(voicesResponse);
 
   return (
     <>

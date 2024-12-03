@@ -1,11 +1,8 @@
 "use client";
-import { CheckIcon, CopyIcon, PlayIcon, PlusIcon } from "@radix-ui/react-icons";
 import Button from "@/components/ui/Button";
 import React, { useState } from "react";
-//import { useRouter } from "next/router";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-//import { generateRandomGradient } from "@/functions/gradient";
 
 interface VoiceItemProps {
   voice: Persona;
@@ -59,56 +56,79 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
 
   return (
     <>
-      <li className="p-5 rounded-lg bg-ghost">
-        <div className="flex justify-between mb-4">
-          <div className="flex items-center">
-            {voice.avatar ? (
-              <div className="mr-2">
-                <Image src={voice.avatar} alt="" width={50} height={50} />
+      {voice.thumbImage ? (
+        <li className="rounded-lg border-2 overflow-hidden">
+          <div className="-">
+            <Image
+              src={voice.thumbImage}
+              alt=""
+              width={400}
+              height={200}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+          <div className="p-5">
+            <div className="mb-5">
+              <span className="text-xl font-bold">
+                {voice.DisplayName}, {voice.LocaleName}
+              </span>
+            </div>
+            <div>
+              <div className="flex gap-2">
+                <Button onClick={handlePlayClick}>
+                  <span>Play</span>
+                </Button>
+                <Button variant="ghost" onClick={handleOpenClick}>
+                  {isLoading ? <span>Loading</span> : <span>Open</span>}
+                </Button>
               </div>
-            ) : (
-              <div className="h-10 w-10 bg-gray-300 rounded-full mr-2"></div>
-            )}
-            <span className="text-2xl font-bold">{voice.DisplayName}</span>
-          </div>
-          <div>
-            <div className="flex gap-2">
-              <Button variant="ghost" onClick={handleOpenClick}>
-                {isLoading ? <span>Loading</span> : <span>Open</span>}
-              </Button>
-              <Button onClick={handlePlayClick}>
-                <span>Play</span>
-              </Button>
-
-              {/* <Button onClick={handleCopy}>
-                {copied ? <CheckIcon /> : <CopyIcon />}
-              </Button> */}
             </div>
           </div>
-        </div>
-        <div className="">
-          <div className="mb-5">
-            <div>{voice.LocaleName}</div>
-            <div className="">{voice.Gender}</div>
+        </li>
+      ) : (
+        <li className="p-5 rounded-lg border-2">
+          <div className="flex justify-between mb-4">
+            <div className="flex items-center">
+              {voice.avatar ? (
+                <div className="mr-2">
+                  <Image src={voice.avatar} alt="" width={50} height={50} />
+                </div>
+              ) : (
+                <div className="h-10 w-10 bg-gray-300 rounded-full mr-2"></div>
+              )}
+              <span className="text-xl font-bold">
+                {voice.DisplayName}, {voice.LocaleName}
+              </span>
+            </div>
+            <div></div>
           </div>
-
           <div className="">
-            <div className="flex gap-1 flex-wrap">
-              {voice.StyleList
-                ? voice.StyleList.map((style: string, index) => (
-                    <Button
-                      variant={"ghost"}
-                      key={index}
-                      onClick={() => handleClickstyle(style)}
-                    >
-                      <span>{style}</span>
-                    </Button>
-                  ))
-                : null}
+            <div className="">
+              <div className="flex gap-2">
+                <Button variant="ghost" onClick={handleOpenClick}>
+                  {isLoading ? <span>Loading</span> : <span>Open</span>}
+                </Button>
+                <Button onClick={handlePlayClick}>
+                  <span>Play</span>
+                </Button>
+              </div>
+              <div className="flex gap-1 flex-wrap">
+                {voice.StyleList
+                  ? voice.StyleList.map((style: string, index) => (
+                      <Button
+                        variant={"ghost"}
+                        key={index}
+                        onClick={() => handleClickstyle(style)}
+                      >
+                        <span>{style}</span>
+                      </Button>
+                    ))
+                  : null}
+              </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
+      )}
     </>
   );
 };

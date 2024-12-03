@@ -22,6 +22,7 @@ type Style = {
 type Persona = VoiceResponse & {
   avatar: string;
   emotion?: string;
+  thumbImage?: string;
 };
 
 type VoiceResponse = {
