@@ -123,7 +123,6 @@ const VoiceList: React.FC<VoiceListProps> = ({
 
       <div className="container mx-auto mb-20">
         <div className="flex flex-col gap-1 w-60">
-          <div className="font-semibold mb-2">Select language</div>
           {size === "lg" ? (
             <SelectLangLg
               options={languageItems}

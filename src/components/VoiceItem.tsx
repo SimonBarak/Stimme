@@ -75,11 +75,15 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
             </div>
             <div>
               <div className="flex gap-2">
-                <Button onClick={handlePlayClick}>
+                <Button size="small" onClick={handlePlayClick}>
                   <span>Play</span>
                 </Button>
-                <Button variant="ghost" onClick={handleOpenClick}>
-                  {isLoading ? <span>Loading</span> : <span>Open</span>}
+                <Button size="small" variant="text" onClick={handleOpenClick}>
+                  {isLoading ? (
+                    <span>Loading</span>
+                  ) : (
+                    <span>Open in editor</span>
+                  )}
                 </Button>
               </div>
             </div>
@@ -105,11 +109,15 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
           <div className="">
             <div className="">
               <div className="flex gap-2">
-                <Button variant="ghost" onClick={handleOpenClick}>
-                  {isLoading ? <span>Loading</span> : <span>Open</span>}
-                </Button>
-                <Button onClick={handlePlayClick}>
+                <Button size="small" onClick={handlePlayClick}>
                   <span>Play</span>
+                </Button>
+                <Button size="small" variant="text" onClick={handleOpenClick}>
+                  {isLoading ? (
+                    <span>Loading</span>
+                  ) : (
+                    <span>Open in editor</span>
+                  )}
                 </Button>
               </div>
               <div className="flex gap-1 flex-wrap">

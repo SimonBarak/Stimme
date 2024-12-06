@@ -36,14 +36,14 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       "bg-yellow-200 border border-yellow-800 text-yellow-800 hover:bg-yellow-800",
     tag: "bg-yellow-200 border border-yellow-800 text-yellow-800 hover:bg-yellow-300 rounded-xl",
     ghost: "bg-ghost",
-    text: "bg-transparent hover:bg-gray-700",
+    text: "bg-transparent underline",
     danger: "bg-red-500 hover:bg-red-600",
     disabled: "bg-ghost",
   };
 
   // Tailwind classes based on size prop
   const sizeClasses: Record<Size, string> = {
-    small: "px-2 py-1 text-sm",
+    small: "px-4 py-2 text-sm",
     medium: "px-6 py-3",
     large: "px-6 py-4 text-lg",
   };

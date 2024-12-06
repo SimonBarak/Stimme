@@ -15,13 +15,13 @@ export default async function Page() {
       <div className=" ">
         <section className="container mx-auto py-20 md:py-36 w-full text-left">
           <h1 className="px-4 text-3xl md:text-5xl lg:text-8xl lg:leading-none xl:leading-none mb-6 lg:mb-10 xl:mb-10">
-            AI-Powered Voices
+            AI Powered Voices
             <br /> for Audio Recording
           </h1>
           <p className="px-4 text-lg md:text-2xl lg:text-3xl lg:leading-tight xl:leading-tight font-normal mb-10">
             Create high-quality audio in your own language 🇪🇺
           </p>
-          <div className="px-4 mb-40">
+          <div className="px-4 mb-20">
             <StartButton
               size={"large"}
               href={"/edit"}

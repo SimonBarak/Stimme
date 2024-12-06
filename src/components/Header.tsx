@@ -9,8 +9,8 @@ type HeaderType = {
 
 export default function Header({ showCTS = false }: HeaderType) {
   return (
-    <div className="fixed top-0 w-full">
-      <div className="p-5 py-6">
+    <div className="fixed top-0 w-full bg-white border-b">
+      <div className="p-5 px-7">
         <div className="flex items-center">
           <div className="grow font-bold">
             <Link href={"/"}>Stimme.studio</Link>
