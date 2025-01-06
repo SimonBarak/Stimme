@@ -112,7 +112,5 @@ function addAvatars(voices: VoiceResponse[]) {
 export function addUIdata(voices: VoiceResponse[]): Persona[] {
   const voicesWithAvatars: Persona[] = addAvatars(voices);
   const voicesWithThumbNails: Persona[] = addThumbImages(voicesWithAvatars);
-
-  console.log(voicesWithThumbNails);
   return voicesWithThumbNails;
 }

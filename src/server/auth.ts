@@ -39,7 +39,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       try {
         // Create a Stripe customer
-        console.log("email", user.email);
         const customer = await stripe.customers.create({
           // @ts-ignore
           email: user.email,
