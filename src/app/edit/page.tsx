@@ -40,15 +40,25 @@ export default async function Page() {
 
   return (
     <>
-      <StimmeEditor
-        initialValue={initialValue}
-        initialLaguage={initialLanguage}
-        personas={personas}
-        phonemes={phonemes}
-        isAuth={isAuth}
-        isPro={isPro}
-        initialAudioLink={initialAudioLink}
-      />
+      <div>
+        <div className="hidden md:block">
+          <StimmeEditor
+            initialValue={initialValue}
+            initialLaguage={initialLanguage}
+            personas={personas}
+            phonemes={phonemes}
+            isAuth={isAuth}
+            isPro={isPro}
+            initialAudioLink={initialAudioLink}
+          />
+        </div>
+        <div className="flex items-center justify-center h-screen md:hidden">
+          <div>
+            <p className="text-xl text-center px-4 mb-5">Desktop Required</p>
+            <p>Stimme.studio is only supported on desktop devices</p>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -13,12 +13,12 @@ export default async function Page() {
     <>
       <Header showCTS={true} />
       <div className=" ">
-        <section className="container mx-auto py-20 md:py-36 w-full text-left">
-          <h1 className="px-4 text-3xl md:text-5xl lg:text-8xl lg:leading-none xl:leading-none mb-6 lg:mb-10 xl:mb-10">
+        <section className="container mx-auto py-28 md:py-44 w-full text-left">
+          <h1 className="px-4 text-4xl font-medium tracking-tight leading-tight md:text-5xl md:leading-tight lg:text-7xl lg:leading-tight xl:text-8xl xl:leading-tight mb-4 md:mb-6 lg:mb-8">
             AI Powered Voices
             <br /> for Audio Recording
           </h1>
-          <p className="px-4 text-lg md:text-2xl lg:text-3xl lg:leading-tight xl:leading-tight font-normal mb-10">
+          <p className="px-4 text-base leading-relaxed md:text-lg md:leading-relaxed lg:text-xl lg:leading-relaxed xl:text-2xl xl:leading-relaxed font-normal mb-6 md:mb-8 lg:mb-10">
             Create high-quality audio in your own language 🇪🇺
           </p>
           <div className="px-4 mb-20">
@@ -29,13 +29,13 @@ export default async function Page() {
             />
           </div>
 
-          <div className="min-w-96 min-h-96 bg-gray-100 rounded-2xl shadow-xl overflow-hidden border-4 border-gray-100">
+          <div className="w-full max-w-4xl mx-auto h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-gray-100 rounded-2xl shadow-xl overflow-hidden border-4 border-gray-100">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className=" rounded-2xl overflow-hidden "
+              className="w-full h-full object-cover rounded-2xl overflow-hidden"
             >
               <source
                 src="https://res.cloudinary.com/dhxmg9p4i/video/upload/v1730476281/wavepage/klipp23fiedbtxlm4wli.webm"
