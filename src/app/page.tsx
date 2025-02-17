@@ -2,7 +2,6 @@ import { getVoices } from "@/functions/static";
 import { addUIdata, validateSchema } from "@/functions/helpers";
 import VoiceList from "@/components/VoiceList";
 import Header from "@/components/Header";
-import Layout from "./layout";
 import StartButton from "@/components/StartButton";
 
 export default async function Page() {
@@ -29,7 +28,7 @@ export default async function Page() {
             />
           </div>
 
-          <div className="w-full max-w-4xl mx-auto h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-gray-100 rounded-2xl shadow-xl overflow-hidden border-4 border-gray-100">
+          <div className="w-full max-w-4xl mx-auto bg-gray-100 rounded-2xl shadow-xl overflow-hidden border-4 border-gray-100">
             <video
               autoPlay
               loop
