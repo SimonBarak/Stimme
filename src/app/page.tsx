@@ -72,20 +72,20 @@ export default async function Page() {
           </p>
 
           <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal mb-16">
-            simon@hlasem.com
+            hi@simonbarak.de
           </p>
           <p className="px-4 mb-8 ">
             <span className="font-semibold text-gray-500">ADDRESS</span>
           </p>
           <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal mb-8">
-            Strallauer Allee 17b
+            Stralauer Allee 17b
             <br /> Berlin, Germany
           </p>
         </section>
         <section className="flex justify-center py-80 bg-gray-200">
           <div className="flex flex-col text-center">
-            <a href="https://simon-barak.link/" className="">
-              © simon-barak.link
+            <a href="https://simonbarak.de" className="">
+              © simonbarak.de
             </a>
           </div>
         </section>

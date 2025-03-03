@@ -23,16 +23,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   adapter: TableStorageAdapter(tableClient),
-  // callbacks: {
-  //   async signIn({ user, account, profile }) {
-  //     // Return a specific URL or `null` to skip the redirect to the "Check your email" page
-  //     return "/edit"; // Set your custom redirect URL here
-  //   },
-  // },
   events: {
-    // signIn: async ({ user }) => {
-    //   console.log(user);
-    // },
     createUser: async ({ user }) => {
       // @ts-ignore
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);

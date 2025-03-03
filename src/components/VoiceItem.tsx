@@ -108,7 +108,7 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
           </div>
           <div className="">
             <div className="">
-              <div className="flex gap-2">
+              <div className="flex gap-2 mb-2">
                 <Button size="small" onClick={handlePlayClick}>
                   <span>Play</span>
                 </Button>
@@ -125,6 +125,7 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
                   ? voice.StyleList.map((style: string, index) => (
                       <Button
                         variant={"ghost"}
+                        size={"small"}
                         key={index}
                         onClick={() => handleClickstyle(style)}
                       >
