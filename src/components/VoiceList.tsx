@@ -122,7 +122,10 @@ const VoiceList: React.FC<VoiceListProps> = ({
       ) : null}
 
       <div className="container mx-auto mb-20">
-        <div className="flex flex-col gap-1 w-60">
+        <div className="text-center px-4 text-base leading-relaxed md:text-lg md:leading-relaxed lg:text-xl lg:leading-relaxed xl:text-2xl xl:leading-relaxed font-normal mb-6 md:mb-8 lg:mb-10 mx-auto">
+          Find voice in your language
+        </div>
+        <div className="flex justify-center">
           {size === "lg" ? (
             <SelectLangLg
               options={languageItems}

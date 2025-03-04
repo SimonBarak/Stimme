@@ -28,7 +28,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 }) => {
   const baseClasses =
     "inline-flex items-center justify-center rounded-md transition-all cursor-pointer flex gap-1";
-
+  const typographyClasses = "font-medium tracking-wide antialiased";
   // Tailwind classes based on variant prop
   const variantClasses: Record<Variant, string> = {
     default: "bg-yellow-200 hover:bg-yellow-300 text-black",
@@ -48,7 +48,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     large: "px-6 py-4 text-lg",
   };
 
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+  const classes = `${baseClasses} ${typographyClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 
   return (
     <Button className={classes} onClick={onClick}>

@@ -9,10 +9,10 @@ type HeaderType = {
 
 export default function Header({ showCTS = false }: HeaderType) {
   return (
-    <div className="fixed top-0 w-full bg-white border-b">
-      <div className="p-5 px-10 xl:px-16">
+    <div className="fixed top-0 w-full backdrop-blur-[10px] supports-[backdrop-filter]:bg-[--slate-1]/90">
+      <div className="py-5 px-10">
         <div className="flex items-center">
-          <div className="grow font-bold">
+          <div className="grow font-medium">
             <Link href={"/"}>Stimme.studio</Link>
           </div>
           <div></div>
@@ -23,6 +23,7 @@ export default function Header({ showCTS = false }: HeaderType) {
                 size={"medium"}
                 href={"/edit"}
                 text={"Create recording"}
+                variant={"bold"}
               />
             ) : null}
           </nav>

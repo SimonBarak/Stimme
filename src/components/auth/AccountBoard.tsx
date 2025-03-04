@@ -23,7 +23,12 @@ const AccountBoard: React.FC<AccountBoardProps> = ({ email, isPro }) => {
         </div>
       </div>
       <div className="mb-10">
-        <StartButton size={"medium"} href={"/pricing"} text={"Change Plan"} />
+        <StartButton
+          variant={"default"}
+          size={"medium"}
+          href={"/pricing"}
+          text={"Change Plan"}
+        />
       </div>
 
       <p className="mb-4">

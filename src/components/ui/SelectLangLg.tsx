@@ -28,7 +28,7 @@ const SelectDemo = ({
       <Select.Trigger className="SelectTrigger bg-ghost" aria-label="Food">
         <Select.Value placeholder={def} />
         <Select.Icon className="SelectIcon">
-          <ChevronDownIcon style={{ outlineWidth: "40px", height: "40px" }} />
+          <ChevronDownIcon style={{ width: "18px", height: "18px" }} />
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>

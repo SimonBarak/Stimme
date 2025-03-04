@@ -93,9 +93,9 @@ button {
 
 .size-xl .SelectTrigger {
   /* color: var(--gray-9); */
-  height: 72px;
-  font-size: 2rem;
+  height: 42px;
+  width: 248px;
+  font-size: 1rem;
   padding: 0 15px;
-  width: 460px;
   border-radius: 8px;
 }

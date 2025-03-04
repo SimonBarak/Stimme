@@ -92,6 +92,7 @@ input {
 }
 
 .CloseButton {
+  cursor: pointer;
   font-family: inherit;
   border-radius: 100%;
   height: 25px;
@@ -99,10 +100,10 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--violet-11);
+  color: var(--black-a7);
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 16px;
+  right: 16px;
 }
 
 /* .IconButton:hover {
