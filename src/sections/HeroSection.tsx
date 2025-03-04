@@ -6,7 +6,7 @@ import { Background } from "./Background";
 export default function HeroSection() {
   return (
     <section id="hero" className="text-center">
-      <div className="container mx-auto py-28 md:py-44 w-full">
+      <div className="container mx-auto py-12 md:py-44 w-full">
         <h1 className="px-4 text-4xl font-medium tracking-tight leading-tight md:text-5xl md:leading-tight lg:text-7xl lg:leading-tight xl:text-8xl xl:leading-tight mb-4 md:mb-6 lg:mb-8">
           AI Powered Voices
         </h1>

@@ -53,8 +53,8 @@ export default async function Page() {
           />
         </div>
         <div className="flex items-center justify-center h-screen md:hidden">
-          <div>
-            <p className="text-xl text-center px-4 mb-5">Desktop Required</p>
+          <div className="text-center">
+            <p className="text-xl px-4 mb-5">Desktop Required</p>
             <p>Stimme.studio is only supported on desktop devices</p>
           </div>
         </div>

@@ -29,10 +29,10 @@ export default async function Page() {
           <h2 className="px-4 max-w-4xl text-3xl md:text-5xl lg:text-8xl lg:leading-none xl:leading-none mb-6 lg:mb-20 xl:mb-8">
             Contact
           </h2>
-          <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal xl:mb-20">
+          <p className="px-4 max-w-2xl text-lg md:text-2xl lg:text-2xl lg:leading-tight xl:leading-tight font-normal mb-16">
             If you need any support, please contact me by mail
           </p>
-          <p className="px-4 mb-8 ">
+          <p className="px-4 mb-4">
             <span className="font-semibold text-gray-500">EMAIL</span>
           </p>
 

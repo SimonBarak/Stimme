@@ -69,7 +69,7 @@ const VoiceItem: React.FC<VoiceItemProps> = ({ voice, handlePlayAudio }) => {
           </div>
           <div className="p-5">
             <div className="mb-5">
-              <span className="text-xl font-bold">
+              <span className="text-xl font-medium">
                 {voice.DisplayName}, {voice.LocaleName}
               </span>
             </div>
