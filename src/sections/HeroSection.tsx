@@ -12,7 +12,7 @@ export default function HeroSection() {
         </h1>
         <div className="px-4 text-base leading-relaxed  md:leading-relaxed lg:leading-relaxed md:text-xl xl:text-2xl xl:leading-relaxed font-normal mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto">
           <p>Create high-quality audio in your own language </p>
-          <p>🇪🇺 🇩🇪 🇨🇿 🇫🇷 🇮🇹 🇪🇸</p>
+          <p>🇪🇺 🇩🇪 🇬🇧 🇫🇷 🇮🇹 🇪🇸 🇨🇿</p>
         </div>
         <div className="px-4 mb-20">
           <StartButton
