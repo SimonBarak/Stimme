@@ -20,14 +20,14 @@ export default function StartButton({
 
   const sizeClasses: Record<Size, string> = {
     small: "px-2 py-1 text-sm",
-    medium: "px-6 py-4",
+    medium: "px-4 py-3",
     large: "px-6 py-4 text-lg",
     huge: "px-6 py-4 text-lg md:text-2xl lg:text-3xl",
   };
 
   const variantClasses = {
     default: "bg-yellow-200 hover:bg-yellow-300 text-black",
-    bold: "bg-black hover:bg-gray-700 text-white",
+    bold: "bg-gray-900 hover:bg-gray-700 text-white",
   };
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;

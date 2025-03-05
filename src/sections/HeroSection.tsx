@@ -6,11 +6,11 @@ import { Background } from "./Background";
 export default function HeroSection() {
   return (
     <section id="hero" className="text-center">
-      <div className="container mx-auto py-12 mt-20 md:mt-44 w-full">
-        <h1 className="px-4 text-4xl font-medium tracking-tight leading-tight md:text-5xl md:leading-tight lg:text-7xl lg:leading-tight xl:text-8xl xl:leading-tight mb-4 md:mb-6 lg:mb-8">
+      <div className="container mx-auto py-12 md:py-20 mt-20 md:mt-44 w-full">
+        <h1 className="px-4 text-4xl font-medium tracking-tight leading-tight md:leading-tight md:text-6xl lg:text-8xl lg:leading-tight xl:text-8xl xl:leading-tight mb-4 md:mb-6 lg:mb-8">
           AI Powered Voices
         </h1>
-        <div className="px-4 text-base leading-relaxed md:text-lg md:leading-relaxed lg:text-xl lg:leading-relaxed xl:text-2xl xl:leading-relaxed font-normal mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto">
+        <div className="px-4 text-base leading-relaxed  md:leading-relaxed lg:leading-relaxed md:text-xl xl:text-2xl xl:leading-relaxed font-normal mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto">
           <p>Create high-quality audio in your own language </p>
           <p>🇪🇺 🇩🇪 🇨🇿 🇫🇷 🇮🇹 🇪🇸</p>
         </div>
