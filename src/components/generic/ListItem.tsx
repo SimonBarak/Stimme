@@ -2,7 +2,6 @@
 import React from "react";
 import Popover from "../ui/Popover";
 import Select from "../ui/Select";
-import Button from "../ui/Button";
 import Image from "next/image";
 
 type ListItemProps = {
@@ -26,6 +25,10 @@ const ListItem: React.FC<ListItemProps> = ({
     onUpdate(item.id, { value: value });
   };
 
+  const handleDelete = (id: string) => {
+    onDelete(item.id);
+  };
+
   return (
     <div className="flex items-center menuItem">
       <div className="flex grow gap-2">
@@ -45,18 +48,18 @@ const ListItem: React.FC<ListItemProps> = ({
       </div>
       {/* TODO: clean pop-over */}
       <Popover type="update">
-        <div className="flex flex-col gap-2 text-sm">
-          <div className="flex gap-2">
-            <div className="label w-24">Name</div>
+        <div className="flex flex-col gap-4 text-sm">
+          <div className="flex gap-2 justify-start items-center">
+            <div className="label w-16">Name</div>
             <input
-              className="Input"
+              className="max-w-24"
               type="text"
               value={item.name}
               onChange={(e) => handleNameChange(e.target.value)}
             />
           </div>
-          <div className="flex gap-2">
-            <div className="label w-24">Value</div>
+          <div className="flex gap-2 items-center">
+            <div className="label w-16">Value</div>
             {item.options ? (
               <Select
                 options={item.options}
@@ -64,22 +67,8 @@ const ListItem: React.FC<ListItemProps> = ({
                 setValue={(value: string) => handleValueChange(value)}
               />
             ) : (
-              <input
-                className="Input"
-                type="text"
-                value={item.value}
-                onChange={(e) => handleValueChange(e.target.value)}
-              />
+              <div className="text-gray-500">No options</div>
             )}
-          </div>
-          <div className="w-full flex justify-end">
-            <Button
-              size={"small"}
-              variant={"outline"}
-              onClick={() => onDelete(item.id)}
-            >
-              Delete
-            </Button>
           </div>
         </div>
       </Popover>

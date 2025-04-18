@@ -10,12 +10,12 @@ input {
 }
 
 .PopoverContent {
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 20px;
   width: 260px;
-  background-color: white;
+  background-color: rgb(233 234 236);
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
-    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+    hsl(206 22% 7% / 20%) 0px 5px 10px -10px;
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
@@ -38,7 +38,7 @@ input {
 }
 
 .PopoverArrow {
-  fill: white;
+  fill: rgb(233 224 216);
 }
 
 .PopoverClose {

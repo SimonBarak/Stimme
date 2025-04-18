@@ -36,7 +36,12 @@ const PopoverDemo: React.FC<PopoverDemoProps> = ({ children, type }) => {
         )}
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content className="PopoverContent" sideOffset={5}>
+        <Popover.Content
+          className="PopoverContent"
+          sideOffset={5}
+          side="right"
+          align="start"
+        >
           <p className="label text-sm mb-4">
             {/* {type === "create" ? "Add item" : "Update item"} */}
           </p>
